@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <div className=" absolute bottom-0 w-full h-[65%] lg:h-[80%]">
+      <div className="bg-blue-500/10 absolute bottom-0 w-full h-[65%] lg:h-[80%]">
         <div className="w-full h-full p-4">
           <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
             {Games.map((Game: any) => (
@@ -25,7 +25,7 @@ function App() {
               // "
               //   onMouseEnter={handleHover}
               // >
-                <div key={Game.id} className="absolute m-2 max-w-[188px]">
+                <div key={Game.id} className="m-2 overflow-hidden">
                 <img
                   className="rounded-2xl object-contain "
                   src={Game.image}
@@ -64,15 +64,15 @@ const Games = [
   },
   {
     name: "Game3",
-    image: "https://wallpaperaccess.com/full/221343.jpg",
+    image: "https://images.crazygames.com/holey-io-battle-royale/20230815121211/holey-io-battle-royale-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
     id: 3,
   },
   {
-    name: "Game4",
-    image: "https://wallpaperaccess.com/full/221344.jpg",
+    name: "Rocket Bot Royal",
+    image: "https://images.crazygames.com/rocket-bot-royale/20220310095708/rocket-bot-royale-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -80,7 +80,7 @@ const Games = [
   },
   {
     name: "Game5",
-    image: "https://wallpaperaccess.com/full/221345.jpg",
+    image: "https://images.crazygames.com/games/kirka-io/cover-1649101040624.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -88,7 +88,7 @@ const Games = [
   },
   {
     name: "Game6",
-    image: "https://wallpaperaccess.com/full/221346.jpg",
+    image: "https://images.crazygames.com/games/sky-riders-buk/cover-1689090304613.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -96,7 +96,7 @@ const Games = [
   },
   {
     name: "Game7",
-    image: "https://wallpaperaccess.com/full/221347.jpg",
+    image: "https://images.crazygames.com/cups---water-sort-puzzle/20221212114329/cups---water-sort-puzzle-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -104,7 +104,7 @@ const Games = [
   },
   {
     name: "Game8",
-    image: "https://wallpaperaccess.com/full/221348.jpg",
+    image: "https://images.crazygames.com/helix-jump/20220519091317/helix-jump-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -112,7 +112,7 @@ const Games = [
   },
   {
     name: "Game9",
-    image: "https://wallpaperaccess.com/full/221349.jpg",
+    image: "https://images.crazygames.com/my-crystal-underwater/20230814084625/my-crystal-underwater-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -120,7 +120,7 @@ const Games = [
   },
   {
     name: "Game10",
-    image: "https://wallpaperaccess.com/full/2213410.jpg",
+    image: "https://images.crazygames.com/games/slash-royal/cover-1655221266157.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -128,7 +128,7 @@ const Games = [
   },
   {
     name: "Game11",
-    image: "https://wallpaperaccess.com/full/2213411.jpg",
+    image: "https://images.crazygames.com/sniper-mission-blj/20230811170517/sniper-mission-blj-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -136,7 +136,7 @@ const Games = [
   },
   {
     name: "Game12",
-    image: "https://wallpaperaccess.com/full/2213412.jpg",
+    image: "https://images.crazygames.com/bubble-fall/20230823180143/bubble-fall-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -144,7 +144,7 @@ const Games = [
   },
   {
     name: "Game13",
-    image: "https://wallpaperaccess.com/full/2213413.jpg",
+    image: "https://images.crazygames.com/escape-underground-demo/20230818153631/escape-underground-demo-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -152,7 +152,7 @@ const Games = [
   },
   {
     name: "Game14",
-    image: "https://wallpaperaccess.com/full/2213414.jpg",
+    image: "https://images.crazygames.com/skibidi-toilets-infection/20230807101836/skibidi-toilets-infection-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -160,7 +160,7 @@ const Games = [
   },
   {
     name: "Game15",
-    image: "https://wallpaperaccess.com/full/2213415.jpg",
+    image: "https://images.crazygames.com/blaster-rush/20230821092739/blaster-rush-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -168,7 +168,7 @@ const Games = [
   },
   {
     name: "Game16",
-    image: "https://wallpaperaccess.com/full/2213416.jpg",
+    image: "https://images.crazygames.com/cubie-jump/20230822080049/cubie-jump-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
