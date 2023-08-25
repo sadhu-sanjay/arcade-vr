@@ -1,8 +1,14 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
+  background-color: rgb(193, 192, 255);
   text-align: center;
+  /* background: url('../src/assets/header.png') no-repeat center;
+  background-size:contain;
+  height: 100%;
+  width: 100%; */
+  /* background-color: blue; */
 }
 
 .logo {
