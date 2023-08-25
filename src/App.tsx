@@ -1,32 +1,43 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import header from "./assets/header5.png";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import hoverSound from "../src/assets/sounds/hover.wav";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [playSound, setPlaySound] = useState(false);
+  const handleHover = () => {
+    setPlaySound(true);
+    const audio = new Audio(hoverSound);
+    audio.play();
+  };
 
   return (
     <>
-      <div className=" absolute bottom-0 w-full h-[65%]">
+      <div className=" absolute bottom-0 w-full h-[65%] lg:h-[80%]">
         <div className="w-full h-full p-4">
           <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
             {Games.map((Game: any) => (
-              <div className="  rounded-lg relative bg-white m-4 z-20 ">
-                <div className="absolute bottom-1 left-2 text-white">
-                  {Game.name}
-                </div>
+              // <div
+              //   key={Game.id}
+              //   className="hover:shadow-2xl shadow-xl hover:scale-110 transition-transform duration-100
+              // ease-in-out transform hover:border-collapse border-2 hover:shadow-amber-700 hover:border-amber-700 
+              // rounded-2xl relative bg-white m-4 shadow-Fuchsia-700 shadow-border-Fuchsia-700
+              // lg:min-h-[100px] 
+              // "
+              //   onMouseEnter={handleHover}
+              // >
+                <div key={Game.id} className="absolute m-2 max-w-[188px]">
                 <img
-                  className="rounded-lg h-full w-full object-cover "
+                  className="rounded-2xl object-contain "
                   src={Game.image}
                   alt={Game.name}
                 />
-              </div>
+                </div>
+              // </div>
             ))}
           </div>
         </div>
       </div>
+      {playSound && <audio src={hoverSound} autoPlay />}
     </>
   );
 }
@@ -37,7 +48,7 @@ export default App;
 const Games = [
   {
     name: "Game1",
-    image: "https://wallpaperaccess.com/full/221341.jpg",
+    image: "https://images.crazygames.com/turbo-crash/20230815180910/turbo-crash-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -45,7 +56,7 @@ const Games = [
   },
   {
     name: "Game2",
-    image: "https://wallpaperaccess.com/full/221342.jpg",
+    image: "https://images.crazygames.com/shellshockersio/20230203070909/shellshockersio-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     description: "this is a Game",
     price: 10,
     rating: 4.5,
@@ -121,6 +132,7 @@ const Games = [
     description: "this is a Game",
     price: 10,
     rating: 4.5,
+    id: 11,
   },
   {
     name: "Game12",
@@ -128,6 +140,7 @@ const Games = [
     description: "this is a Game",
     price: 10,
     rating: 4.5,
+    id: 12,
   },
   {
     name: "Game13",
@@ -135,6 +148,7 @@ const Games = [
     description: "this is a Game",
     price: 10,
     rating: 4.5,
+    id: 13,
   },
   {
     name: "Game14",
@@ -142,6 +156,7 @@ const Games = [
     description: "this is a Game",
     price: 10,
     rating: 4.5,
+    id: 14,
   },
   {
     name: "Game15",
@@ -149,6 +164,7 @@ const Games = [
     description: "this is a Game",
     price: 10,
     rating: 4.5,
+    id:15,
   },
   {
     name: "Game16",
@@ -156,5 +172,6 @@ const Games = [
     description: "this is a Game",
     price: 10,
     rating: 4.5,
+    id:16
   },
-];
+]
