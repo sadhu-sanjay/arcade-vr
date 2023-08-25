@@ -9,12 +9,14 @@ function App() {
 
   return (
     <>
-      <div className="bg-blue-100/10 absolute bottom-0 w-full h-[65%]">
+      <div className=" absolute bottom-0 w-full h-[65%]">
         <div className="w-full h-full p-4">
-          <div className="grid grid-cols-4 grid-rows-4 rounded-lg bg-red-700 w-full h-full">
+          <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
             {Games.map((Game: any) => (
-              <div className="rounded-lg relative bg-white m-4 z-20 bg-gradient-to-t ">
-                <div className="absolute bottom-1 left-2 text-white">{Game.name}</div>
+              <div className="  rounded-lg relative bg-white m-4 z-20 ">
+                <div className="absolute bottom-1 left-2 text-white">
+                  {Game.name}
+                </div>
                 <img
                   className="rounded-lg h-full w-full object-cover "
                   src={Game.image}
