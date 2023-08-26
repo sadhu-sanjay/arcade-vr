@@ -9,10 +9,12 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
     name: "Arcade VR",
     short_name: "avr",
     description: "A VR Arcade UI",
-    display: "standalone",
+    display: "fullscreen",
     scope: "/",
     start_url: "/",
     orientation: "portrait"
+    // Hide Address Bar in pwa
+    // https://stackoverflow.com/questions/14754913/how-to-hide-the-address-bar-in-a-full-screen-iphone-or-android-web-app
   },
 };
 
