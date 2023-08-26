@@ -41,7 +41,6 @@ function App() {
   function Credits() {
     const [credits, setCredits] = useState(0);
 
-    const [randomNumber, setRandomNumber] = useState(0);
 
     const fetchRandomNumber = async () => {
       console.log("fetchRandomNumber");
@@ -50,7 +49,7 @@ function App() {
 
         const data = await response.json();
         console.log("Result:", data.random_number);
-        setRandomNumber(data.random_number);
+        setCredits(data.random_number);
       } catch (error) {
         console.error("Error fetching random number:", error);
       }
@@ -61,7 +60,7 @@ function App() {
           Credits
         </div>
         <div className=" font-bold animate-blink text-8xl text-amber-700">
-          {randomNumber}
+          {credits}
         </div>
       </div>
     );
