@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import hoverSound from "../src/assets/sounds/hover.wav";
 import useSound from "use-sound";
-import design3d from "../src/assets/3d.png";
+import design3d from "../src/assets/rainbow.png";
 
 function App() {
   const soundUrl = hoverSound;
@@ -10,22 +10,22 @@ function App() {
 
   return (
     <>
-      <Credits />
-      <img className="absolute bottom-0 right-0" src={design3d} alt="3dbg Design" />
+      <div className="frame">
+        <div className="font-semibold inversion-effects text-slate-800 text-xl">Credits</div>
+        <div className=" font-bold animate-blink text-8xl text-amber-700">
+            0
+          </div>
+      </div>
+      {/* <Credits /> */}
+      <img
+        className="absolute bottom-0 right-0"
+        src={design3d}
+        alt="3dbg Design"
+      />
       <div className="bg-blue-500/10 absolute bottom-0 w-full h-[65%] lg:h-[80%]">
         <div className="w-full h-full p-4">
           <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
             {Games.map((Game: any) => (
-              // <div
-              //   key={Game.id}
-              //   className="hover:shadow-2xl shadow-xl hover:scale-110 transition-transform duration-100
-              // ease-in-out transform hover:border-collapse border-2 hover:shadow-amber-700 hover:border-amber-700
-              // rounded-2xl relative bg-white m-4 shadow-Fuchsia-700 shadow-border-Fuchsia-700
-              // lg:min-h-[100px]
-              // "
-              //   onMouseEnter={handleHover}
-              // >
-
               <div key={Game.id} className="mx-3 " onMouseEnter={play}>
                 <img
                   className=" object-contain 
@@ -46,10 +46,16 @@ function App() {
 
   function Credits() {
     return (
-      <div className=" absolute top-0 right-0 p-4">
-        <div className="flex flex-col-reverse">
-          <span className="text-white text-2xl font-bold">Credits</span>
-          <span className="text-white text-2xl font-bold">0</span>
+      <div
+        className="p-6 absolute top-0 shadow-2xl  
+      rounded-lg right-0 m-2"
+      >
+        <div className="flex flex-col gap-3">
+          {/* add line height 1.2 */}
+          <span className="leading-5 text-white text-3xl ">Credits</span>
+          <div className=" font-bold animate-blink text-8xl text-amber-700">
+            0
+          </div>
         </div>
       </div>
     );
