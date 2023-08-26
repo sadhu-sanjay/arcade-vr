@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import hoverSound from "../src/assets/sounds/hover.wav";
 import useSound from "use-sound";
+import design3d from "../src/assets/3d.png";
 
 function App() {
   const soundUrl = hoverSound;
@@ -9,6 +10,8 @@ function App() {
 
   return (
     <>
+      <Credits />
+      <img className="absolute bottom-0 right-0" src={design3d} alt="3dbg Design" />
       <div className="bg-blue-500/10 absolute bottom-0 w-full h-[65%] lg:h-[80%]">
         <div className="w-full h-full p-4">
           <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
@@ -23,14 +26,10 @@ function App() {
               //   onMouseEnter={handleHover}
               // >
 
-              <div
-                key={Game.id}
-                className="mx-3 "
-                onMouseEnter={play}
-              >
+              <div key={Game.id} className="mx-3 " onMouseEnter={play}>
                 <img
                   className=" object-contain 
-                  hover:shadow-2xl shadow-lg hover:scale-110 transition-transform duration-100
+                  hover:shadow-2xl shadow-lg hover:scale-110 transition-transform duration-100 border
                 ease-in-out transform hover:border-collapse  hover:shadow-amber-700 hover:border-amber-700
                 rounded-2xl relative shadow-gray-500 shadow-border-gray-500"
                   src={Game.image}
@@ -44,6 +43,17 @@ function App() {
       </div>
     </>
   );
+
+  function Credits() {
+    return (
+      <div className=" absolute top-0 right-0 p-4">
+        <div className="flex flex-col-reverse">
+          <span className="text-white text-2xl font-bold">Credits</span>
+          <span className="text-white text-2xl font-bold">0</span>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

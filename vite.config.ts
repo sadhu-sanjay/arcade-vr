@@ -9,7 +9,7 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
     name: "Arcade VR",
     short_name: "avr",
     description: "A VR Arcade UI",
-    display: "fullscreen",
+    display: "standalone",
     scope: "/",
     start_url: "/",
     orientation: "portrait"
