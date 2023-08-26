@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import hoverSound from "../src/assets/sounds/hover.wav";
 import useSound from "use-sound";
@@ -10,13 +10,7 @@ function App() {
 
   return (
     <>
-      <div className="frame">
-        <div className="font-semibold inversion-effects text-white text-xl">Credits</div>
-        <div className=" font-bold animate-blink text-8xl text-amber-700">
-            0
-          </div>
-      </div>
-      {/* <Credits /> */}
+      <Credits />
       <img
         className="absolute bottom-0 right-0"
         src={design3d}
@@ -45,17 +39,29 @@ function App() {
   );
 
   function Credits() {
+    const [credits, setCredits] = useState(0);
+
+    const [randomNumber, setRandomNumber] = useState(null);
+
+    const fetchRandomNumber = async () => {
+      console.log("fetchRandomNumber");
+      try {
+        const response = await fetch("http://192.168.29.115:5002/credit");
+
+        const data = await response.json();
+        console.log("Result:", data.random_number);
+        setRandomNumber(data.random_number);
+      } catch (error) {
+        console.error("Error fetching random number:", error);
+      }
+    };
     return (
-      <div
-        className="p-6 absolute top-0 shadow-2xl  
-      rounded-lg right-0 m-2"
-      >
-        <div className="flex flex-col gap-3">
-          {/* add line height 1.2 */}
-          <span className="leading-5 text-white text-3xl ">Credits</span>
-          <div className=" font-bold animate-blink text-8xl text-amber-700">
-            0
-          </div>
+      <div className="frame" onClick={fetchRandomNumber}>
+        <div className="font-semibold inversion-effects text-white text-xl">
+          Credits
+        </div>
+        <div className=" font-bold animate-blink text-8xl text-amber-700">
+          {randomNumber}
         </div>
       </div>
     );
