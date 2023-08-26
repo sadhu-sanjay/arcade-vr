@@ -55,12 +55,11 @@
   flex-shrink: 0;
   display: block;
   padding: 0.5rem;
-  background-color: #fff;
   overflow: hidden;
   position: absolute;
   top: 0;
   right: 0;
-  margin: 1rem;
+  margin: 1.5rem;
   border-radius: 10px;
 }
 

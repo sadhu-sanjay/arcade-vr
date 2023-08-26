@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <div className="frame">
-        <div className="font-semibold inversion-effects text-slate-800 text-xl">Credits</div>
+        <div className="font-semibold inversion-effects text-white text-xl">Credits</div>
         <div className=" font-bold animate-blink text-8xl text-amber-700">
             0
           </div>
@@ -22,7 +22,7 @@ function App() {
         src={design3d}
         alt="3dbg Design"
       />
-      <div className="bg-blue-500/10 absolute bottom-0 w-full h-[65%] lg:h-[80%]">
+      <div className="bg-blue-500/10 absolute bottom-0 w-full h-[60%] lg:h-[80%]">
         <div className="w-full h-full p-4">
           <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
             {Games.map((Game: any) => (
