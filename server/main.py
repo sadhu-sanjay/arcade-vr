@@ -15,6 +15,10 @@ CORS(app)
 @app.route('/credit', methods=['GET'])
 def get_random_number():
     random_number = random.randint(1, 100)  # Generate a random number between 1 and 100
+    
+    print("Request received")
+    print("Credit: ", random_number)
+
     return jsonify({'random_number': random_number})
 
 if __name__ == '__main__':

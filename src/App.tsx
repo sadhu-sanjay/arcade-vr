@@ -41,7 +41,7 @@ function App() {
   function Credits() {
     const [credits, setCredits] = useState(0);
 
-    const [randomNumber, setRandomNumber] = useState(null);
+    const [randomNumber, setRandomNumber] = useState(0);
 
     const fetchRandomNumber = async () => {
       console.log("fetchRandomNumber");
