@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import hoverSound from "../src/assets/sounds/hover.wav";
 import useSound from "use-sound";
@@ -19,7 +19,7 @@ function App() {
       <div className="bg-blue-500/10 absolute bottom-0 w-full h-[60%] lg:h-[80%]">
         <div className="w-full h-full p-4">
           <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
-            {Games.map((Game: any) => (
+            {Games.map((Game) => (
               <div key={Game.id} className="mx-3 " onMouseEnter={play}>
                 <img
                   className=" object-contain 
