@@ -1,12 +1,62 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import hoverSound from "../src/assets/sounds/hover.wav";
+
 import useSound from "use-sound";
+
 import design3d from "../src/assets/rainbow.png";
+import { Games } from "../src/data/games";
 
 function App() {
   const soundUrl = hoverSound;
   const [play] = useSound(soundUrl);
+
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const { key } = event;
+      const items = Array.from(gridRef.current?.children || []);
+      const index = items.indexOf(document.activeElement as HTMLElement);
+
+      switch (key) {
+        case "ArrowUp":
+          event.preventDefault();
+          const prevRowItem = items[index - 4] as HTMLElement;
+          prevRowItem && prevRowItem.focus();
+          break;
+        case "ArrowDown":
+          event.preventDefault();
+          const nextRowItem = items[index + 4] as HTMLElement;
+          nextRowItem && nextRowItem.focus();
+          break;
+        case "ArrowLeft":
+          event.preventDefault();
+          const prevItem = items[index - 1] as HTMLElement;
+          prevItem && prevItem.focus();
+          break;
+        case "ArrowRight":
+          event.preventDefault();
+          const nextItem = items[index + 1] as HTMLElement;
+          nextItem && nextItem.focus();
+          break;
+        case "Enter":
+          event.preventDefault();
+          // eslint-disable-next-line no-case-declarations
+          const game = Games[index];
+          if (game.gameLink) {
+            window.open(game.gameLink, "_blank");
+          }
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <>
@@ -18,19 +68,24 @@ function App() {
       />
       <div className="bg-blue-500/10 absolute bottom-0 w-full h-[60%] lg:h-[80%]">
         <div className="w-full h-full p-4">
-          <div className="grid grid-cols-4 grid-rows-4 rounded-lg w-full h-full">
-            {Games.map((Game) => (
-              <div key={Game.id} className="mx-3 " onMouseEnter={play}>
-                <img
-                  className=" object-contain 
-                  hover:shadow-2xl shadow-lg hover:scale-110 transition-transform duration-100 border
-                ease-in-out transform hover:border-collapse  hover:shadow-amber-700 hover:border-amber-700
+          <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {Games.map((Game, index) => (
+              <div
+                key={Game.id}
+                onFocus={play}
+                tabIndex={index + 1}
+                className="focus:shadow-2xl shadow-lg focus:scale-105 transition-transform duration-100 border
+                ease-in-out transform focus:border-collapse  focus:shadow-amber-700 focus:border-amber-700
                 rounded-2xl relative shadow-gray-500 shadow-border-gray-500"
+                style={{ outline: "none" }}
+              >
+                <img
+                  className="h-auto max-w-full object-contain rounded-2xl"
+                  // src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
                   src={Game.image}
                   alt={Game.name}
                 />
               </div>
-              // </div>
             ))}
           </div>
         </div>
@@ -40,7 +95,6 @@ function App() {
 
   function Credits() {
     const [credits, setCredits] = useState(0);
-
 
     const fetchRandomNumber = async () => {
       console.log("fetchRandomNumber");
@@ -68,151 +122,3 @@ function App() {
 }
 
 export default App;
-
-// 16 random Games from some api
-const Games = [
-  {
-    name: "Game1",
-    image:
-      "https://images.crazygames.com/turbo-crash/20230815180910/turbo-crash-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 1,
-  },
-  {
-    name: "Game2",
-    image:
-      "https://images.crazygames.com/shellshockersio/20230203070909/shellshockersio-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 2,
-  },
-  {
-    name: "Game3",
-    image:
-      "https://images.crazygames.com/holey-io-battle-royale/20230815121211/holey-io-battle-royale-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 3,
-  },
-  {
-    name: "Rocket Bot Royal",
-    image:
-      "https://images.crazygames.com/rocket-bot-royale/20220310095708/rocket-bot-royale-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 4,
-  },
-  {
-    name: "Game5",
-    image:
-      "https://images.crazygames.com/games/kirka-io/cover-1649101040624.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 5,
-  },
-  {
-    name: "Game6",
-    image:
-      "https://images.crazygames.com/games/sky-riders-buk/cover-1689090304613.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 6,
-  },
-  {
-    name: "Game7",
-    image:
-      "https://images.crazygames.com/cups---water-sort-puzzle/20221212114329/cups---water-sort-puzzle-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 7,
-  },
-  {
-    name: "Game8",
-    image:
-      "https://images.crazygames.com/helix-jump/20220519091317/helix-jump-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 8,
-  },
-  {
-    name: "Game9",
-    image:
-      "https://images.crazygames.com/my-crystal-underwater/20230814084625/my-crystal-underwater-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 9,
-  },
-  {
-    name: "Game10",
-    image:
-      "https://images.crazygames.com/games/slash-royal/cover-1655221266157.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 10,
-  },
-  {
-    name: "Game11",
-    image:
-      "https://images.crazygames.com/sniper-mission-blj/20230811170517/sniper-mission-blj-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 11,
-  },
-  {
-    name: "Game12",
-    image:
-      "https://images.crazygames.com/bubble-fall/20230823180143/bubble-fall-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 12,
-  },
-  {
-    name: "Game13",
-    image:
-      "https://images.crazygames.com/escape-underground-demo/20230818153631/escape-underground-demo-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 13,
-  },
-  {
-    name: "Game14",
-    image:
-      "https://images.crazygames.com/skibidi-toilets-infection/20230807101836/skibidi-toilets-infection-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 14,
-  },
-  {
-    name: "Game15",
-    image:
-      "https://images.crazygames.com/blaster-rush/20230821092739/blaster-rush-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 15,
-  },
-  {
-    name: "Game16",
-    image:
-      "https://images.crazygames.com/cubie-jump/20230822080049/cubie-jump-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
-    description: "this is a Game",
-    price: 10,
-    rating: 4.5,
-    id: 16,
-  },
-];
