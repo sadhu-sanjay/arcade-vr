@@ -1,8 +1,8 @@
-import design3d from "../src/assets/header.png";
+// import design3d from "../src/assets/header.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 ">
+    <div className="flex flex-col items-center justify-center min-h-screen ">
       <head>
         <title>Games</title>
         <link rel="icon" href="/favicon.ico" />

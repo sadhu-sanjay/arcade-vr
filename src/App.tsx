@@ -65,7 +65,7 @@ function App() {
         src={rainbow}
         alt="3d bg Design"
       /> */}
-      <header className=" flex flex-col items-center justify-center h-[25dvh] bg-red-200">
+      <header className=" flex flex-col items-center justify-center h-[25dvh] ">
         <img
           src={design3d}
           alt="Bami Logo"
@@ -78,7 +78,7 @@ function App() {
       </header>
       <div
         ref={gridRef}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-pink-800 h-[70dvh] overflow-scroll"
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 h-[75dvh] overflow-scroll"
       >
         {Games.map((Game, index) => (
           <div
