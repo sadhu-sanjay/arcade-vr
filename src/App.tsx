@@ -128,6 +128,7 @@ function App() {
           {credits}
         </div>
       </div>
+      
     );
   }
 }
