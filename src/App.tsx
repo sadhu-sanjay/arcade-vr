@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import hoverSound from "../src/assets/sounds/hover.wav";
-
 import useSound from "use-sound";
-
-import design3d from "../src/assets/rainbow.png";
+import design3d from "../src/assets/header.png";
+// import rainbow from "../src/assets/rainbow.png";
 import { Games } from "../src/data/games";
 
 function App() {
@@ -60,35 +59,45 @@ function App() {
 
   return (
     <>
-      <Credits />
+      {/* <Credits />
       <img
         className="absolute bottom-0 right-0"
-        src={design3d}
-        alt="3dbg Design"
-      />
-      <div className="bg-blue-500/10 absolute bottom-0 w-full h-[60%] lg:h-[80%]">
-        <div className="w-full h-full p-4">
-          <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Games.map((Game, index) => (
-              <div
-                key={Game.id}
-                onFocus={play}
-                tabIndex={index + 1}
-                className="focus:shadow-2xl shadow-lg focus:scale-105 transition-transform duration-100 border
+        src={rainbow}
+        alt="3d bg Design"
+      /> */}
+      <header className=" flex flex-col items-center justify-center h-[25dvh] bg-red-200">
+        <img
+          src={design3d}
+          alt="Bami Logo"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+        />
+      </header>
+      <div
+        ref={gridRef}
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-pink-800 h-[70dvh] overflow-scroll"
+      >
+        {Games.map((Game, index) => (
+          <div
+            key={Game.id}
+            // onFocus={play}
+            tabIndex={index + 1}
+            className="focus:shadow-2xl shadow-lg focus:scale-105 transition-transform duration-100 border
                 ease-in-out transform focus:border-collapse  focus:shadow-amber-700 focus:border-amber-700
                 rounded-2xl relative shadow-gray-500 shadow-border-gray-500"
-                style={{ outline: "none" }}
-              >
-                <img
-                  className="h-auto max-w-full object-contain rounded-2xl"
-                  // src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-                  src={Game.image}
-                  alt={Game.name}
-                />
-              </div>
-            ))}
+            style={{ outline: "none" }}
+          >
+            <img
+              className="h-auto max-w-full object-contain rounded-2xl"
+              // src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+              src={Game.image}
+              alt={Game.name}
+            />
           </div>
-        </div>
+        ))}
       </div>
     </>
   );
