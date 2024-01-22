@@ -1,8 +1,22 @@
 // import design3d from "../src/assets/header.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen ">
+      <button className="absolute left-2 top-2" onClick={toggleFullScreen}>
+        Toggle Full Screen
+      </button>
       <head>
         <title>Games</title>
         <link rel="icon" href="/favicon.ico" />
@@ -20,9 +34,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         />
       </header> */}
 
-      <main className="bg-red-900 flex flex-col items-center justify-center flex-1 px-4 w-full">
+      <main className="flex flex-col items-center justify-center flex-1 px-4 w-full">
         {/* <div className="bg-blue-900 flex flex-col items-center justify-center w-full flex-1 px-4"> */}
-          {children}
+        {children}
         {/* </div> */}
       </main>
 
