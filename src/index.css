@@ -35,7 +35,7 @@ body {
   min-height: 100dvh;
   height: 100dvh;
   background-color: red;
-  background: url('../src/assets/space.gif');
+  background: url('/space.gif');
   background-position:top;
   background-repeat: no-repeat;
   background-size: cover;

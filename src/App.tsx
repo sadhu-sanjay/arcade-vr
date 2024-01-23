@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import hoverSound from "../src/assets/sounds/hover.wav";
+import hoverSound from "/hover.wav";
 
 //@ts-expect-error i can't find the types for this
 import useSound from "use-sound";
-import design3d from "../src/assets/header.png";
-import rainbow from "../src/assets/rainbow.png";
+import design3d from "/header.png";
+import rainbow from "/rainbow.png";
 import { Games } from "../src/data/games";
 
 function App() {
