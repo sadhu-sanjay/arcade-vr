@@ -1,17 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
-import hoverSound from "/hover.wav";
 
 //@ts-expect-error i can't find the types for this
-import useSound from "use-sound";
-import design3d from "/header.png";
 import rainbow from "/rainbow.png";
 import { Games } from "../src/data/games";
+import MainMenu from "./app/main-menu";
 
 function App() {
-  const soundUrl = hoverSound;
-  const [play] = useSound(soundUrl);
-
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -60,48 +55,10 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div>
       <Credits />
-      <img
-        className="absolute bottom-0 right-0"
-        src={rainbow}
-        alt="3d bg Design"
-      />
-      <header className=" flex flex-col items-center justify-center h-[25dvh] ">
-        <img
-          src={design3d}
-          alt="Bami Logo"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      </header>
-      <div
-        ref={gridRef}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 h-[75dvh] overflow-scroll"
-      >
-        {Games.map((Game, index) => (
-          <div
-            key={Game.id}
-            onFocus={play}
-            tabIndex={index + 1}
-            className="focus:shadow-2xl shadow-lg focus:scale-105 transition-transform duration-100 border
-                ease-in-out transform focus:border-collapse  focus:shadow-amber-700 focus:border-amber-700
-                rounded-2xl relative shadow-gray-500 shadow-border-gray-500"
-            style={{ outline: "none" }}
-          >
-            <img
-              className="h-auto max-w-full object-contain rounded-2xl"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-              src={Game.image}
-              alt={Game.name}
-            />
-          </div>
-        ))}
-      </div>
-    </>
+      <MainMenu />
+    </div>
   );
 
   function Credits() {
@@ -128,7 +85,6 @@ function App() {
           {credits}
         </div>
       </div>
-      
     );
   }
 }
