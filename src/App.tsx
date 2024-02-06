@@ -5,6 +5,7 @@ import "./App.css";
 import rainbow from "/rainbow.png";
 import { Games } from "../src/data/games";
 import MainMenu from "./app/main-menu";
+import Carousel from "~/components/organisms/carousel";
 
 function App() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -55,10 +56,10 @@ function App() {
   }, []);
 
   return (
-    <div>
+      <>
       <Credits />
       <MainMenu />
-    </div>
+      </>
   );
 
   function Credits() {

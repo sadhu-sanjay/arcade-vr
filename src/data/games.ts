@@ -2,7 +2,7 @@ export const Games = [
     {
         name: "Game1",
         image:
-            "https://images.crazygames.com/turbo-crash/20230815180910/turbo-crash-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
+            "https://images.crazygames.com/turbo-crash/20230815180909/turbo-crash-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
         description: "this is a Game",
         price: 10,
         rating: 4.5,

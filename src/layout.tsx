@@ -15,9 +15,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   /**
    * Main Application Layout
+   *
    */
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen ">
+    <div className="flex flex-col items-center justify-center min-h-screen h-screen ">
       <button className="absolute left-2 top-2" onClick={toggleFullScreen}>
         Toggle Full Screen
       </button>
@@ -30,8 +31,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         src={rainbow}
         alt="3d bg Design"
       />
-      <main className="bg-blue-900 flex flex-col items-center justify-center flex-1 px-4 w-full">
-          <header className=" flex flex-col items-center justify-center h-[25dvh] ">
+      <main className="bg-blue-500 flex flex-col items-center justify-center flex-1  w-full h-full">
+          {/*<header className=" flex flex-col items-center justify-center h-[25dvh] ">
             <img
               src={design3d}
               alt="Bami Logo"
@@ -41,7 +42,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 objectFit: "contain",
               }}
             />
-          </header>
+          </header> */}
           {children}
       </main>
 
