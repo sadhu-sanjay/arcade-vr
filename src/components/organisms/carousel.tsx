@@ -35,6 +35,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
     const prevIndex = (currentImageIndex - 1 + images.length) % images.length
     setCurrentImageIndex(prevIndex)
+
+    const child = gridRef.current?.children[prevIndex] as HTMLElement;
+    child.focus();
+
   }, [currentImageIndex, images]);
 
   /**
@@ -68,7 +72,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         case "Enter":
           event.preventDefault();
           // eslint-disable-next-line no-case-declarations
-          const game = Games[index];
+          const game = images[index];
           if (game.gameLink) {
             window.open(game.gameLink, "_blank");
           }
@@ -81,9 +85,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleNextClick, handlePrevClick]);
+  }, [handleNextClick, handlePrevClick, images]);
 
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNextClick();
+    }, 5000);
+    return () => clearInterval(interval);
+  }
+  , [handleNextClick]);
 
   return (
     <>
@@ -126,7 +136,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           ref={gridRef}
           className="absolute z-30 flex space-x-3 bottom-5  
           grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-2 bg-gray-900/10 dark:bg-gray-800/10 
-          overflow-scroll ">
+          overflow-hidden ">
             {images?.map((item, index) => (
               <div
                 key={index}
