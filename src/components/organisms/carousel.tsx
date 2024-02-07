@@ -1,5 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { ImagePlaceHolder } from "~/components/templates/image-placeholder";
+
+//@ts-expect-error i can't find the types for this
+import useSound from "use-sound";
+import hoverSound from "/hover.wav";
 
 type ImageSliderProps = {
   images: any[];
@@ -15,22 +19,70 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   onImageChange,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const play = useSound(hoverSound);
 
-  const handleNextClick = () => {
-    setCurrentImageIndex((currentImageIndex + 1) % images.length);
-  };
+  const handleNextClick = useCallback(() => {
+    
+    const nextIndex = (currentImageIndex + 1) % images.length;
+    setCurrentImageIndex(nextIndex);
 
-  const handlePrevClick = () => {
-    setCurrentImageIndex(
-      (currentImageIndex - 1 + images.length) % images.length
-    );
-  };
+    const child = gridRef.current?.children[nextIndex] as HTMLElement;
+    child.focus();
 
+}, [currentImageIndex, images]);
+
+  const handlePrevClick = useCallback(() => {
+
+    const prevIndex = (currentImageIndex - 1 + images.length) % images.length
+    setCurrentImageIndex(prevIndex)
+  }, [currentImageIndex, images]);
+
+  /**
+   * Handle Keyboard Navigation
+   */
+  const gridRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (onImageChange) {
-      onImageChange(currentImageIndex);
-    }
-  }, [currentImageIndex, onImageChange]);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const { key } = event;
+      const items = Array.from(gridRef.current?.children || []);
+      const index = items.indexOf(document.activeElement as HTMLElement);
+    
+      switch (key) {
+        case "ArrowUp":
+          event.preventDefault();
+          handlePrevClick()
+          break;
+        case "ArrowDown":
+          event.preventDefault();
+          handleNextClick() 
+          break;
+        case "ArrowLeft":
+          event.preventDefault();
+          handlePrevClick()
+          break;
+        case "ArrowRight":
+          event.preventDefault();
+          handleNextClick()
+          break;
+        case "Enter":
+          event.preventDefault();
+          // eslint-disable-next-line no-case-declarations
+          const game = Games[index];
+          if (game.gameLink) {
+            window.open(game.gameLink, "_blank");
+          }
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleNextClick, handlePrevClick]);
+
 
 
   return (
@@ -58,14 +110,11 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 <video autoPlay loop muted playsInline
                   className={`absolute block w-full h-full transition-transform duration-700 ease-in-out transform object-cover
                   -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
-
                   <source 
                   src={item.prev ? item.prev : item.image}
                   type="video/webm" />
                   Your browser does not support the video tag.
                 </video>
-
-
 
               </div>
             ))}
@@ -73,17 +122,21 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         </div>
 
         <div className={`${images?.length > 1 ? "block" : "hidden"}`}>
-          <div className="absolute z-30 flex space-x-3 bottom-5 transform 
-          grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-2 bg-gray-900/10 dark:bg-gray-800/10 rounded 
-          shadow-lg overflow-hidden ">
+          <div 
+          ref={gridRef}
+          className="absolute z-30 flex space-x-3 bottom-5  
+          grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-2 bg-gray-900/10 dark:bg-gray-800/10 
+          overflow-scroll ">
             {images?.map((item, index) => (
-              <button
+              <div
                 key={index}
-                type="button"
-                style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
-                className={`shadow-sm rounded min-w-[250px] min-h-[131px]
-                ${ index === currentImageIndex ? "bg-white" : "bg-gray-300"}
-                `}
+                 // onFocus={play}
+                 tabIndex={index + 0}
+                style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
+                 className={`focus:shadow-2xl focus:scale-110 focus:border-collapse 
+                 focus:shadow-amber-701 focus:border-amber-700 min-h-[131px] 
+                 min-w-[250px] shadow-lg  transition-transform duration-100 border 
+                 ease-in-out transform  rounded-xl relative `}
                 aria-current={index === currentImageIndex}
                 aria-label={`Slide ${index + 1}`}
                 data-carousel-slide-to={index}
@@ -92,7 +145,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                   setCurrentImageIndex(index);
                 }}
               >
-              </button>
+              </div>
             ))}
           </div>
           <button

@@ -8,53 +8,6 @@ import MainMenu from "./app/main-menu";
 import Carousel from "~/components/organisms/carousel";
 
 function App() {
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      const { key } = event;
-      const items = Array.from(gridRef.current?.children || []);
-      const index = items.indexOf(document.activeElement as HTMLElement);
-
-
-      switch (key) {
-        case "ArrowUp":
-          event.preventDefault();
-          const prevRowItem = items[index - 4] as HTMLElement;
-          prevRowItem && prevRowItem.focus();
-          break;
-        case "ArrowDown":
-          event.preventDefault();
-          const nextRowItem = items[index + 4] as HTMLElement;
-          nextRowItem && nextRowItem.focus();
-          break;
-        case "ArrowLeft":
-          event.preventDefault();
-          const prevItem = items[index - 1] as HTMLElement;
-          prevItem && prevItem.focus();
-          break;
-        case "ArrowRight":
-          event.preventDefault();
-          const nextItem = items[index + 1] as HTMLElement;
-          nextItem && nextItem.focus();
-          break;
-        case "Enter":
-          event.preventDefault();
-          // eslint-disable-next-line no-case-declarations
-          const game = Games[index];
-          if (game.gameLink) {
-            window.open(game.gameLink, "_blank");
-          }
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
 
   return (
       <>
