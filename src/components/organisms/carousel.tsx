@@ -158,7 +158,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           </div>
           <button
             type="button"
-            className=" absolute top-1/2 left-0 z-30 flex items-center justify-center h-auto px-4 cursor-pointer group focus:outline-none"
+            className="hidden absolute top-1/2 left-0 z-30 flex items-center justify-center h-auto px-4 cursor-pointer group focus:outline-none"
             data-carousel-prev
             onClick={(e: any) => {
               e.stopPropagation();
@@ -196,7 +196,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               handleNextClick();
             }}
             type="button"
-            className="absolute  top-1/2 right-0 z-30 flex items-center justify-center h-auto px-4 cursor-pointer group focus:outline-none"
+            className="absolute hidden  top-1/2 right-0 z-30 flex items-center justify-center h-auto px-4 cursor-pointer group focus:outline-none"
           >
             <span
               className={`${
