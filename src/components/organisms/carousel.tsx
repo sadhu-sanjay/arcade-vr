@@ -88,7 +88,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   useEffect(() => {
     const interval = setInterval(() => {
       handleNextClick();
-    }, 5000);
+    }, 30000);
     return () => clearInterval(interval);
   }
   , [handleNextClick]);
