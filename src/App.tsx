@@ -16,6 +16,7 @@ function App() {
       const items = Array.from(gridRef.current?.children || []);
       const index = items.indexOf(document.activeElement as HTMLElement);
 
+
       switch (key) {
         case "ArrowUp":
           event.preventDefault();

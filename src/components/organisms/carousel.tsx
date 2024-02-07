@@ -32,6 +32,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     }
   }, [currentImageIndex, onImageChange]);
 
+
   return (
     <>
       <div
@@ -58,7 +59,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                   className={`absolute block w-full h-full transition-transform duration-700 ease-in-out transform object-cover
                   object-contain -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
                   <source 
-                  src={"https://cdn.cloudflare.steamstatic.com/steam/apps/256915896/movie480_vp9.webm?t=1684358207"}
+                  src={item.prev ? item.prev : item.image}
                   type="video/webm" />
                   Your browser does not support the video tag.
                 </video>
@@ -71,16 +72,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         </div>
 
         <div className={`${images?.length > 1 ? "block" : "hidden"}`}>
-// grid with as many items as poosible horizinatally with 400px width
           <div className="absolute z-30 flex space-x-3 bottom-5 transform 
-          grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-2 bg-gray-900 dark:bg-gray-800 rounded 
-          shadow-lg overflow-scroll">
+          grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-2 bg-gray-900/10 dark:bg-gray-800/10 rounded 
+          shadow-lg overflow-hidden ">
             {images?.map((item, index) => (
               <button
                 key={index}
                 type="button"
                 style={{ backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
-                className={`shadow-sm rounded min-w-[192px] min-h-[108px]
+                className={`shadow-sm rounded min-w-[250px] min-h-[131px]
                 ${ index === currentImageIndex ? "bg-white" : "bg-gray-300"}
                 `}
                 aria-current={index === currentImageIndex}
