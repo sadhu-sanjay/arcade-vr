@@ -37,7 +37,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     <>
       <div
         id="default-carousel"
-        className={`bg-blue-900 w-full h-full bg-gray-900 relative`}
+        className={` w-full h-full bg-gray-900 relative`}
         data-carousel="slide"
       >
         <div
@@ -57,7 +57,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               >
                 <video autoPlay loop muted playsInline
                   className={`absolute block w-full h-full transition-transform duration-700 ease-in-out transform object-cover
-                  object-contain -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
+                  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
+
                   <source 
                   src={item.prev ? item.prev : item.image}
                   type="video/webm" />
