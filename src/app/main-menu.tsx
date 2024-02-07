@@ -1,12 +1,8 @@
 import { Games } from "~/data/games";
 
-//@ts-expect-error i can't find the types for this
-import useSound from "use-sound";
-import hoverSound from "/hover.wav";
 import Carousel from "~/components/organisms/carousel";
 
 export default function MainMenu() {
-  const play = useSound(hoverSound);
 
   return (
   <div className="w-full h-full">
@@ -14,7 +10,6 @@ export default function MainMenu() {
       images={Games}
       isFullScreen={false}
       setIsFullScreen={() => {}}
-      onImageChange={() => {}}
     />
     </div>
 

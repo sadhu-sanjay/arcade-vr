@@ -3,7 +3,6 @@ export const Games = [
     {
         name: "War Thunder",
         prev: "https://cdn.cloudflare.steamstatic.com/steam/apps/256989000/movie480_vp9.webm?t=1702564000",
-        name: "Game1",
         image: "https://cdn.cloudflare.steamstatic.com/steam/apps/236390/header.jpg?t=1706020414",
         description: "this is a Game",
         price: 10,

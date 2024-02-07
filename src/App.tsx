@@ -1,20 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 //@ts-expect-error i can't find the types for this
 import rainbow from "/rainbow.png";
-import { Games } from "../src/data/games";
 import MainMenu from "./app/main-menu";
-import Carousel from "~/components/organisms/carousel";
 
 function App() {
 
-  return (
-      <>
-      <Credits />
-      <MainMenu />
-      </>
-  );
+    return ( <>
+                <Credits />
+                <MainMenu />
+            </>);
 
   function Credits() {
     const [credits, setCredits] = useState(0);

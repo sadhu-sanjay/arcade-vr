@@ -9,14 +9,12 @@ type ImageSliderProps = {
   images: any[];
   isFullScreen: boolean;
   setIsFullScreen: (isFullScreen: boolean) => void;
-  onImageChange?: (index: number) => void;
 };
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   isFullScreen,
   setIsFullScreen,
-  onImageChange,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const play = useSound(hoverSound);
@@ -140,7 +138,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             {images?.map((item, index) => (
               <div
                 key={index}
-                 // onFocus={play}
+                 onFocus={play}
                  tabIndex={index + 0}
                 style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
                  className={`focus:shadow-2xl focus:scale-110 focus:border-collapse 

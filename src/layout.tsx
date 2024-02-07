@@ -1,5 +1,5 @@
 // import design3d from "../src/assets/header.png";
-import design3d from "/header.png";
+// import design3d from "/header.png";
 import rainbow from "/rainbow.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
