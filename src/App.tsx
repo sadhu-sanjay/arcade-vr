@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import design3d from "/header.png"
 
 //@ts-expect-error i can't find the types for this
 import rainbow from "/rainbow.png";
@@ -7,7 +8,8 @@ import MainMenu from "./app/main-menu";
 
 function App() {
 
-    return ( <>
+    return (<>
+                <Logo/>
                 <Credits />
                 <MainMenu />
             </>);
@@ -28,7 +30,7 @@ function App() {
       }
     };
     return (
-      <div className="frame" onClick={fetchRandomNumber}>
+      <div className="absolute z-50 right-16 top-2" onClick={fetchRandomNumber}>
         <div className="font-semibold inversion-effects text-white text-xl">
           Credits
         </div>
@@ -38,6 +40,22 @@ function App() {
       </div>
     );
   }
+
+  function Logo() {
+
+      return (
+        <div className="absolute left-1/4  top-2  z-50 flex flex-col items-center justify-center h-[22dvh] ">
+                <img
+                  src={design3d}
+                  alt="Bamigos Logo"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                  }}
+                />
+            </div>)
+    }
 }
 
 export default App;

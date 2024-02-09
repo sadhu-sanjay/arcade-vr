@@ -115,7 +115,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 }`}
               data-carousel-item
               >
-                <video autoPlay loop muted playsInline
+                <video autoPlay loop playsInline
                   className={`absolute block w-full h-full transition-transform duration-700 ease-in-out transform object-cover
                   -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2`}>
                   <source 
@@ -133,18 +133,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           <div 
           ref={gridRef}
           className="absolute z-30 flex space-x-3 bottom-5  
-          grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-2 bg-gray-900/10 dark:bg-gray-800/10 
+          grid-cols-1 grid-rows-1 gap-2 grid-auto-flow grid-auto-cols-[1fr] grid-auto-rows-[1fr] w-full h-auto px-4 py-4 bg-gray-900/10 dark:bg-gray-800/10 
           overflow-hidden ">
             {images?.map((item, index) => (
               <div
                 key={index}
-                 onFocus={play}
+                 // onFocus={play}
                  tabIndex={index + 0}
                 style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
                  className={`focus:shadow-2xl focus:scale-110 focus:border-collapse 
                  focus:shadow-amber-701 focus:border-amber-700 min-h-[131px] 
-                 min-w-[250px] shadow-lg  transition-transform duration-100 border 
-                 ease-in-out transform  rounded-xl relative `}
+                 min-w-[250px] shadow-lg  border rounded-xl relative 
+                 transform ease-in-out transition-transform
+                 `}
                 aria-current={index === currentImageIndex}
                 aria-label={`Slide ${index + 1}`}
                 data-carousel-slide-to={index}

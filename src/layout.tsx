@@ -1,5 +1,4 @@
-// import design3d from "../src/assets/header.png";
-// import design3d from "/header.png";
+import design3d from "/header.png";
 import rainbow from "/rainbow.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -31,18 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         src={rainbow}
         alt="3d bg Design"
       />
-      <main className="bg-blue-500 flex flex-col items-center justify-center flex-1  w-full h-full">
-          {/*<header className=" flex flex-col items-center justify-center h-[25dvh] ">
-            <img
-              src={design3d}
-              alt="Bami Logo"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "contain",
-              }}
-            />
-          </header> */}
+      <main className="relative flex flex-col items-center justify-center flex-1  w-full h-full">
           {children}
       </main>
 

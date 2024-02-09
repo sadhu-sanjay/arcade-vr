@@ -1,11 +1,12 @@
 import { Games } from "~/data/games";
 
 import Carousel from "~/components/organisms/carousel";
+import design3d from "/header.png" 
 
 export default function MainMenu() {
 
   return (
-  <div className="w-full h-full">
+  <div className="w-full h-full ">
     <Carousel
       images={Games}
       isFullScreen={false}
