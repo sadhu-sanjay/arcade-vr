@@ -14,7 +14,7 @@ function App() {
                 <Credits />
                 <MainMenu 
                    images={Games} 
-                   isFullScreen={false}
+                   isFullScreen={true}
                    setIsFullScreen={() => console.log("hello")}
                    className=""
                 />
@@ -24,13 +24,13 @@ function App() {
     const [credits, setCredits] = useState(0);
 
     const fetchRandomNumber = async () => {
-      console.log("fetchRandomNumber");
       try {
         const response = await fetch("http://192.168.29.115:5002/credit");
 
         const data = await response.json();
         console.log("Result:", data.random_number);
         setCredits(data.random_number);
+
       } catch (error) {
         console.error("Error fetching random number:", error);
       }
