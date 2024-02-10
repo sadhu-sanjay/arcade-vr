@@ -1,11 +1,12 @@
+import { ImagePlaceHolder } from "~/components/templates/image-placeholder"
 
-type ImageSlideProps = {
+type PresenterProps = {
     setIsFullScreen: (flag: boolean) => void;
     items: Array<any>;
     currentImageIndex: number;
 }
 
-const ImageSlide: React.FC<ImageSlideProps> = ({setIsFullScreen, items, currentImageIndex}) => {
+const ImageSlider: React.FC<ImageSlideProps> = ({setIsFullScreen, items, currentImageIndex}) => {
 
 return (
     <div
@@ -23,10 +24,7 @@ return (
                 }`}
               data-carousel-item
               >
-                <img 
-                    src="/vite.svg"
-                    className={"w-full h-full"}
-                    />
+                <img src="/vite.svg" className={"w-full h-full"} />
 
               </div>
             ))}
@@ -34,4 +32,4 @@ return (
         </div>)
 }
 
-export { ImageSlide }
+export { ImageSlider }

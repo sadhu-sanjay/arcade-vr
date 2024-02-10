@@ -1,17 +1,23 @@
 import { useState } from "react";
 import "./App.css";
 import design3d from "/header.png"
+import {Games} from "~/data/games"
 
 //@ts-expect-error i can't find the types for this
 import rainbow from "/rainbow.png";
-import MainMenuLayout from "~/components/layouts/main-menu-layout"
+import MainMenu from "~/app/main-menu"
 
 function App() {
 
     return (<>
                 <Logo/>
                 <Credits />
-                <MainMenuLayout />
+                <MainMenu 
+                   images={Games} 
+                   isFullScreen={false}
+                   setIsFullScreen={() => console.log("hello")}
+                   className=""
+                />
             </>);
 
   function Credits() {

@@ -18,7 +18,8 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentIm
                 key={index}
                  // onFocus={play}
                  tabIndex={index + 0}
-                style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
+                // style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
+                style={{outline: "none", backgroundImage: `url(http://localhost:5173/space.gif)`, backgroundSize: "cover"}}
                  className={`focus:shadow-2xl focus:scale-110 focus:border-collapse 
                  focus:shadow-amber-701 focus:border-amber-700 min-h-[131px] 
                  min-w-[250px] shadow-lg  border rounded-xl relative 
@@ -29,7 +30,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentIm
                 data-carousel-slide-to={index}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onClick(index)
+                  onSelect(index)
                 }}
               >
               </div>
