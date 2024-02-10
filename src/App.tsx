@@ -4,14 +4,14 @@ import design3d from "/header.png"
 
 //@ts-expect-error i can't find the types for this
 import rainbow from "/rainbow.png";
-import MainMenu from "./app/main-menu";
+import MainMenuLayout from "~/components/layouts/main-menu-layout"
 
 function App() {
 
     return (<>
                 <Logo/>
                 <Credits />
-                <MainMenu />
+                <MainMenuLayout />
             </>);
 
   function Credits() {

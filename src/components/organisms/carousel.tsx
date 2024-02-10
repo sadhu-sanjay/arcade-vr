@@ -4,17 +4,21 @@ import { ImagePlaceHolder } from "~/components/templates/image-placeholder";
 //@ts-expect-error i can't find the types for this
 import useSound from "use-sound";
 import hoverSound from "/hover.wav";
+import { NextButton } from "~/components/molecules/next-button"
+import { PrevButton } from "~/components/molecules/prev-button"
 
 type ImageSliderProps = {
   images: any[];
   isFullScreen: boolean;
   setIsFullScreen: (isFullScreen: boolean) => void;
+  className: string;
 };
 
 const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   isFullScreen,
   setIsFullScreen,
+  className,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const play = useSound(hoverSound);
@@ -144,7 +148,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                  className={`focus:shadow-2xl focus:scale-110 focus:border-collapse 
                  focus:shadow-amber-701 focus:border-amber-700 min-h-[131px] 
                  min-w-[250px] shadow-lg  border rounded-xl relative 
-                 transform ease-in-out transition-transform
+                 transform ease-in-out transition-transform duration-400
                  `}
                 aria-current={index === currentImageIndex}
                 aria-label={`Slide ${index + 1}`}
@@ -157,71 +161,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
               </div>
             ))}
           </div>
-          <button
-            type="button"
-            className="hidden absolute top-1/2 left-0 z-30 flex items-center justify-center h-auto px-4 cursor-pointer group focus:outline-none"
-            data-carousel-prev
-            onClick={(e: any) => {
-              e.stopPropagation();
-              handlePrevClick();
-            }}
-          >
-            <span
-              className={`${
-                isFullScreen ? "w-10 h-10" : "w-8 h-8"
-              } inline-flex items-center justify-center rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 
-              dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white 
-              dark:group-focus:ring-gray-800/70 group-focus:outline-none`}
-            >
-              <svg
-                className="w-4 h-4 text-white dark:text-gray-200"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 1 1 5l4 4"
-                />
-              </svg>
-              <span className="sr-only">Previous</span>
-            </span>
-          </button>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleNextClick();
-            }}
-            type="button"
-            className="absolute hidden  top-1/2 right-0 z-30 flex items-center justify-center h-auto px-4 cursor-pointer group focus:outline-none"
-          >
-            <span
-              className={`${
-                isFullScreen ? "w-10 h-10" : "w-8 h-8"
-              } inline-flex items-center justify-center  rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none`}
-            >
-              <svg
-                className="w-4 h-4 text-white dark:text-gray-200"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-              <span className="sr-only">Next</span>
-            </span>
-          </button>
+            <PrevButton onClick={handlePrevClick} /> 
+          <NextButton onClick={handleNextClick} /> 
         </div>
       </div>
     </>

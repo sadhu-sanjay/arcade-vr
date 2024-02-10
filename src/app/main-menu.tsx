@@ -1,7 +1,6 @@
 import { Games } from "~/data/games";
 
 import Carousel from "~/components/organisms/carousel";
-import design3d from "/header.png" 
 
 export default function MainMenu() {
 
@@ -13,7 +12,6 @@ export default function MainMenu() {
       setIsFullScreen={() => {}}
     />
     </div>
-
 
     // {Games.map((Game, index) => (
     //             <div
