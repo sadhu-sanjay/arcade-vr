@@ -117,17 +117,16 @@ const MainMenu: React.FC<MainMenuProps> = ({
             images={images}
             selectedIndex={currentImageIndex}
             onSelect={(index) => setCurrentImageIndex(index)}
+            className={`${isFullScreen ? "flex flex-row gap-4 w-full absolute p-4" : 
+            "w-1/2 flex flex-col gap-4 p-4" }`}
+        />  
 
-            className={`${isFullScreen ? "flex  w-full absolute" : 
-            "w-1/2 flex-col " }`}
-        />            
       </div>
     </>
   );
 };
 
 export default MainMenu
-
 
     // {Games.map((Game, index) => (
     //             <div

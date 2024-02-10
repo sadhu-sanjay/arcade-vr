@@ -14,7 +14,7 @@ function App() {
                 <Credits />
                 <MainMenu 
                    images={Games} 
-                   isFullScreen={true}
+                   isFullScreen={false}
                    setIsFullScreen={() => console.log("hello")}
                    className=""
                 />

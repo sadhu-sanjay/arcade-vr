@@ -13,7 +13,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentIm
           <div 
           ref={componentRef}
           className={`z-30 space-x-3 bottom-5  
-            px-4 py-4 bg-gray-100/10 dark:bg-gray-800/10 gap-4 overflow-hidden ${className}`}>
+            px-4 py-4 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}>
             {images?.map((item, index) => (
               <div
                 key={index}
@@ -21,7 +21,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentIm
                  tabIndex={index + 0}
                 style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
                 // style={{outline: "none", backgroundImage: `url(http://localhost:5173/space.gif)`, backgroundSize: "cover"}}
-                 className={`focus:shadow-2xl focus:scale-110 focus:border-collapse 
+                 className={`focus:shadow-2xl focus:scale-105 focus:border-collapse 
                  focus:shadow-amber-701 focus:border-amber-700 
                   min-h-[131px] min-w-[250px] 
                  shadow-lg  border rounded-xl relative 
