@@ -26,7 +26,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <img
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 left-0"
         src={rainbow}
         alt="3d bg Design"
       />
