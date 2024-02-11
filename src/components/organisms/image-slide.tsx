@@ -6,9 +6,10 @@ type ImageSliderProps = {
     items: Array<Game>;
     currentImageIndex: number;
     className: string
+    isFullScreen: boolean;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, className}) => {
+const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, className, isFullScreen}) => {
 
 
 return (
@@ -25,7 +26,7 @@ return (
           data-carousel-item
         >
           {index === currentImageIndex && (
-            <video autoPlay playsInline className={"w-full h-full object-fit "}>
+            <video autoPlay playsInline className={`${isFullScreen ? "object-cover" : "object-fit"} w-full h-full `}>
               <source src={game.prev || game.image} type="video/webm" />
             </video>
           )}

@@ -90,7 +90,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleNextClick, handlePrevClick, images]);
+  }, [handleNextClick, handlePrevClick, images, play]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -113,6 +113,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             items={images}
             currentImageIndex={currentImageIndex}
             className={`${isFullScreen ? "w-full " : "w-full md:w-1/2 h-1/2 md:h-full"}`}
+            isFullScreen={isFullScreen}
             />
         <ThumbNailSlider 
             componentRef={gridRef}
