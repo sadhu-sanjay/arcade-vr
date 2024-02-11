@@ -17,9 +17,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
    */
   return (
     <main className="flex flex-col items-center justify-center min-h-screen h-screen ">
-      <button className="absolute left-2 top-2" onClick={toggleFullScreen}>
+      {/*<button className="absolute left-2 top-2" onClick={toggleFullScreen}>
         Toggle Full Screen
-      </button>
+      </button> */}
       <head>
         <title>Games</title>
         <link rel="icon" href="/favicon.ico" />
