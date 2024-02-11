@@ -1,4 +1,3 @@
-import design3d from "/header.png";
 import rainbow from "/rainbow.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -8,19 +8,22 @@ import rainbow from "/rainbow.png";
 import MainMenu from "~/app/main-menu"
 
 function App() {
-
+    
+    const [isFullScreen, setIsFullScreen] = useState(false);
+    
     return (<>
+    <h1 className="text=4xl text-white">{isFullScreen}</h1>
                 <Logo/>
-                <Credits />
+                <Credits onClick={() => setIsFullScreen(!isFullScreen)}/>
                 <MainMenu 
                    images={Games} 
-                   isFullScreen={false}
+                   isFullScreen={isFullScreen}
                    setIsFullScreen={() => console.log("hello")}
                    className=""
                 />
             </>);
 
-  function Credits() {
+  function Credits({onClick: _onClick}: {onClick: () => void})  {
     const [credits, setCredits] = useState(0);
 
     const fetchRandomNumber = async () => {
@@ -36,7 +39,7 @@ function App() {
       }
     };
     return (
-      <div className="absolute z-50 right-16 top-2" onClick={fetchRandomNumber}>
+      <div className="cursor-pointer absolute z-50 right-16 top-2" onClick={_onClick}>
         <div className="font-semibold inversion-effects text-white text-xl">
           Credits
         </div>

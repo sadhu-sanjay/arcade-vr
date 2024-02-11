@@ -1,7 +1,8 @@
+import { Game } from "~/models/Game";
 
 type SliderProps = {
-    componentRef: any;
-    images: Array<any>;
+    componentRef: React.RefObject<HTMLDivElement>;
+    images: Array<Game>;
     currentImageIndex: number;
     onSelect: (index: number) => void
     className: string
@@ -12,7 +13,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentIm
         <>
           <div 
           ref={componentRef}
-          className={`z-30 space-x-3 bottom-5  
+          className={`z-30 space-x-3 bottom-5 
             px-4 py-4 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}>
             {images?.map((item, index) => (
               <div

@@ -1,5 +1,5 @@
 type ButtonProps = {
-    onClick: (e) => void;
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
     isFullScreen: boolean
 }
 

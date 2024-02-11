@@ -1,16 +1,17 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { ImagePlaceHolder } from "~/components/templates/image-placeholder";
 
-//@ts-expect-error i can't find the types for this
+// @ts-expect-error i can't find the types for this
 import useSound from "use-sound";
 import hoverSound from "/hover.wav";
 import { ThumbNailSlider } from "~/components/organisms/thumbnail-slider"
 import { ImageSlider } from "~/components/organisms/image-slide"
 import { SlideShowLayout } from "~/components/layouts/slide-show-layout"
+import { Game } from "~/models/Game";
 
 
 type MainMenuProps = {
-  images: any[];
+  images: Array<Game>;
   isFullScreen: boolean;
   setIsFullScreen: (isFullScreen: boolean) => void;
   className: string;
@@ -77,8 +78,8 @@ const MainMenu: React.FC<MainMenuProps> = ({
           event.preventDefault();
           // eslint-disable-next-line no-case-declarations
           const game = images[index];
-          if (game.gameLink) {
-            window.open(game.gameLink, "_blank");
+          if (game.url) {
+            window.open(game.url, "_blank");
           }
           break;
       }
@@ -94,7 +95,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
   useEffect(() => {
     const interval = setInterval(() => {
       handleNextClick();
-    }, 3000);
+    }, 30000);
     return () => clearInterval(interval);
   }
   , [handleNextClick]);
@@ -110,14 +111,13 @@ const MainMenu: React.FC<MainMenuProps> = ({
       >
         <ImageSlider
             items={images}
-            setIsFullScreen={setIsFullScreen}
             currentImageIndex={currentImageIndex}
             className={`${isFullScreen ? "w-full " : "w-full md:w-1/2 h-1/2 md:h-full"}`}
             />
         <ThumbNailSlider 
             componentRef={gridRef}
             images={images}
-            selectedIndex={currentImageIndex}
+            selectedIndex={selectedIndex}
             onSelect={(index) => setCurrentImageIndex(index)}
             className={`${isFullScreen ? 
             "flex flex-row gap-4 w-full absolute p-4" : 
