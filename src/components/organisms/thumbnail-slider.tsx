@@ -3,11 +3,11 @@ import { Game } from "~/models/Game";
 type SliderProps = {
     componentRef: React.RefObject<HTMLDivElement>;
     images: Array<Game>;
-    currentImageIndex: number;
+    selectedIndex: number;
     onSelect: (index: number) => void
     className: string
 }
-const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentImageIndex, onSelect, className}) => {
+const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedIndex, onSelect, className}) => {
     
     return (
         <>
@@ -28,7 +28,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, currentIm
                  shadow-lg  border rounded-xl relative 
                  transform ease-in-out transition-transform duration-400
                  `}
-                aria-current={index === currentImageIndex}
+                aria-current={index === selectedIndex}
                 aria-label={`Slide ${index + 1}`}
                 data-carousel-slide-to={index}
                 onClick={(e) => {

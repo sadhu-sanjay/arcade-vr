@@ -1,12 +1,10 @@
 import { useEffect, useState, useRef, useCallback } from "react";
-import { ImagePlaceHolder } from "~/components/templates/image-placeholder";
 
 // @ts-expect-error i can't find the types for this
 import useSound from "use-sound";
 import hoverSound from "/hover.wav";
 import { ThumbNailSlider } from "~/components/organisms/thumbnail-slider"
 import { ImageSlider } from "~/components/organisms/image-slide"
-import { SlideShowLayout } from "~/components/layouts/slide-show-layout"
 import { Game } from "~/models/Game";
 
 
@@ -20,8 +18,6 @@ type MainMenuProps = {
 const MainMenu: React.FC<MainMenuProps> = ({
   images,
   isFullScreen,
-  setIsFullScreen,
-  className,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const play = useSound(hoverSound);
@@ -51,6 +47,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
    */
   const gridRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
+
 
     const handleKeyDown = (event: KeyboardEvent) => {
       const { key } = event;
@@ -83,6 +80,9 @@ const MainMenu: React.FC<MainMenuProps> = ({
           }
           break;
       }
+
+      // play sound
+      play();
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -95,7 +95,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
   useEffect(() => {
     const interval = setInterval(() => {
       handleNextClick();
-    }, 30000);
+    }, 10000);
     return () => clearInterval(interval);
   }
   , [handleNextClick]);
@@ -117,7 +117,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
         <ThumbNailSlider 
             componentRef={gridRef}
             images={images}
-            selectedIndex={selectedIndex}
+            selectedIndex={currentImageIndex}
             onSelect={(index) => setCurrentImageIndex(index)}
             className={`${isFullScreen ? 
             "flex flex-row gap-4 w-full absolute p-4" : 
