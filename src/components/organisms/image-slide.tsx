@@ -13,19 +13,19 @@ const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, clas
 
 return (
   <div
-    className={`relative h-full overflow-hidden bg-gray-100 dark:bg-gray-900 ${className}`}
+    className={`relative h-full overflow-hidden ${className}`}
   >
     {items &&
       items?.map((game: Game, index: number) => (
         <div
           key={index}
-          className={`duration-500 ease-in-out ${
+          className={`transition-opacity w-full h-full absolute  duration-500 ease-in-out ${
             index === currentImageIndex ? "opacity-100" : "opacity-0"
           }`}
           data-carousel-item
         >
           {index === currentImageIndex && (
-            <video autoPlay playsInline className={"w-full h-full"}>
+            <video autoPlay playsInline className={"w-full h-full object-fit "}>
               <source src={game.prev || game.image} type="video/webm" />
             </video>
           )}
