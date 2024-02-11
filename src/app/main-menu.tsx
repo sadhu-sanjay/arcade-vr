@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 
 // @ts-expect-error i can't find the types for this
 import useSound from "use-sound";
-import hoverSound from "/hover.wav";
+import pingSfx from "/hover.wav";
 import { ThumbNailSlider } from "~/components/organisms/thumbnail-slider"
 import { ImageSlider } from "~/components/organisms/image-slide"
 import { Game } from "~/models/Game";
@@ -20,7 +20,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
   isFullScreen,
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const play = useSound(hoverSound);
+  const [play] = useSound(pingSfx);
 
   const handleNextClick = useCallback(() => {
     

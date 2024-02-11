@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
    *
    */
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen h-screen ">
+    <main className="flex flex-col items-center justify-center min-h-screen h-screen ">
       <button className="absolute left-2 top-2" onClick={toggleFullScreen}>
         Toggle Full Screen
       </button>
@@ -29,9 +29,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         src={rainbow}
         alt="3d bg Design"
       />
-      <main className="relative flex flex-col items-center justify-center flex-1  w-full h-full">
+      <div className="relative flex flex-col items-center justify-center flex-1  w-full h-full">
           {children}
-      </main>
+      </div>
 
       {/* <footer className="flex items-center justify-center w-full h-24 border-t">
         <a
@@ -45,6 +45,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
         </a>
       </footer> */}
-    </div>
+    </main>
   );
 }
