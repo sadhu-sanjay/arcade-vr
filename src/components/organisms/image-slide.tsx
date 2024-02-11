@@ -26,7 +26,7 @@ return (
           data-carousel-item
         >
           {index === currentImageIndex && (
-            <video autoPlay playsInline className={`${isFullScreen ? "object-cover" : "object-fit"} w-full h-full `}>
+            <video autoPlay playsInline className={`object-cover w-full h-full `}>
               <source src={game.prev || game.image} type="video/webm" />
             </video>
           )}
