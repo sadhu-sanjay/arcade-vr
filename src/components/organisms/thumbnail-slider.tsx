@@ -7,11 +7,12 @@ type SliderProps = {
     selectedIndex: number;
     onSelect: (index: number) => void
     className: string
+    isFullScreen: boolean
 }
 
 // GridItem2 const and pass tabindex onfocus aria-current -slide and aria-label as props
 
-const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedIndex, onSelect, className}) => {
+const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedIndex, onSelect, className, isFullScreen}) => {
     
     return (
       <>
@@ -27,16 +28,15 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
               key={index}
               index={index}
             >
-                <div className="flex flex flex-row items-center justify-space-between
-                 gap-4 w-full h-full pr-4 overflow-hidden">
+                <div className={`flex flex flex-row items-center justify-space-between
+                 gap-4 w-full h-full ${isFullScreen ? '' :'pr-4' } overflow-hidden`}>
                     <img
                         src={item.image}
                         alt={item.title}
-                        className="w-1/3 h-full object-cover overflow-hidden rounded-xl shadow-lg border-2 border-gray-100/10 dark:border-gray-800/10"
+                        className={`${isFullScreen ? 'w-full' : 'w-1/3'} h-full object-cover overflow-hidden rounded-xl shadow-lg border-2 border-gray-100/10 dark:border-gray-800/10`}
                     />
-                    <h3 className="text-start w-2/3 text-5xl font-bold text-white">
-                        {item.title}
-                    </h3>
+                    {!isFullScreen && <h3 className="text-start w-2/3 text-5xl font-bold text-white"> {item.title}
+                    </h3>}
                 </div>
             </GridItem2>
           ))}
