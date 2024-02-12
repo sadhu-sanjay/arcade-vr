@@ -9,7 +9,7 @@ type ImageSliderProps = {
     isFullScreen: boolean;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, className, isFullScreen}) => {
+const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, className }) => {
 
 return (
   <div

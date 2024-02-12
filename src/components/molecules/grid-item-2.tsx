@@ -3,14 +3,13 @@ import React from 'react';
 
 type GridItem2Props = {
     index: number;
-    item: any;
     selectedIndex: number;
     onSelect: (index: number) => void;
     children: React.ReactNode;
-    className: string;
+    className?: string;
 };
 
-export const GridItem2: React.FC<GridItem2Props> = ({ index, item, selectedIndex, onSelect, children, className }) => {
+export const GridItem2: React.FC<GridItem2Props> = ({ index,  selectedIndex, onSelect, children, className }) => {
   return (
     <div
       key={index}

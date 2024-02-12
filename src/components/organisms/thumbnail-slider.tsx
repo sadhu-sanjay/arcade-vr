@@ -26,13 +26,12 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
               selectedIndex={selectedIndex}
               key={index}
               index={index}
-              item={item}
             >
                 <div className="flex flex flex-row items-center justify-space-between
                  gap-4 w-full h-full pr-4 overflow-hidden">
                     <img
                         src={item.image}
-                        alt={item.name}
+                        alt={item.title}
                         className="w-1/3 h-full object-cover overflow-hidden rounded-xl shadow-lg border-2 border-gray-100/10 dark:border-gray-800/10"
                     />
                     <h3 className="w-2/3 text-5xl font-bold text-white">
