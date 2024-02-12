@@ -1,4 +1,5 @@
 import { Game } from "~/models/Game";
+import { GridItem2 } from "~/components/molecules/grid-item-2"
 
 type SliderProps = {
     componentRef: React.RefObject<HTMLDivElement>;
@@ -7,40 +8,42 @@ type SliderProps = {
     onSelect: (index: number) => void
     className: string
 }
+
+// GridItem2 const and pass tabindex onfocus aria-current -slide and aria-label as props
+
 const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedIndex, onSelect, className}) => {
     
     return (
-        <>
-          <div 
+      <>
+        <div
           ref={componentRef}
           className={`z-30 space-x-3 bottom-5 
-            px-4 py-4 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}>
-            {images?.map((item, index) => (
-              <div
-                key={index}
-                 // onFocus={play}
-                 tabIndex={index + 0}
-                style={{outline: "none", backgroundImage: `url(${item.image})`, backgroundSize: "cover"}}
-                // style={{outline: "none", backgroundImage: `url(http://localhost:5173/space.gif)`, backgroundSize: "cover"}}
-                 className={`focus:shadow-2xl focus:scale-105 focus:border-collapse 
-                 focus:shadow-amber-701 focus:border-amber-700 
-                  min-h-[131px] min-w-[250px] 
-                 shadow-lg  border rounded-xl relative 
-                 transform ease-in-out transition-transform duration-400
-                 `}
-                aria-current={index === selectedIndex}
-                aria-label={`Slide ${index + 1}`}
-                data-carousel-slide-to={index}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onSelect(index)
-                }}
-              >
-              </div>
-            ))}
-          </div>
-        </>)
-
+            px-4 py-4 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}
+        >
+          {images?.map((item, index) => (
+            <GridItem2
+              onSelect={onSelect}
+              selectedIndex={selectedIndex}
+              key={index}
+              index={index}
+              item={item}
+            >
+                <div className="flex flex flex-row items-center justify-space-between
+                 gap-4 w-full h-full pr-4 overflow-hidden">
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-1/3 h-full object-cover overflow-hidden rounded-xl shadow-lg border-2 border-gray-100/10 dark:border-gray-800/10"
+                    />
+                    <h3 className="w-2/3 text-5xl font-bold text-white">
+                        {item.title}
+                    </h3>
+                </div>
+            </GridItem2>
+          ))}
+        </div>
+      </>
+    );
 }
 
 export { ThumbNailSlider }

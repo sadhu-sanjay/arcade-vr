@@ -11,7 +11,7 @@ export const Games: Array<Game> = [
         id: "1",
     },
     {
-        title: "Game2",
+        title: "Escape the Backrooms",
         image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1943950/header.jpg?t=1706741674",
         description: "this is a Game",
         rating: 4.5,
