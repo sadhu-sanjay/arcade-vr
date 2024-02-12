@@ -11,7 +11,6 @@ type ImageSliderProps = {
 
 const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, className, isFullScreen}) => {
 
-
 return (
   <div
     className={`relative h-full overflow-hidden ${className}`}
