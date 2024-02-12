@@ -34,7 +34,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
                         alt={item.title}
                         className="w-1/3 h-full object-cover overflow-hidden rounded-xl shadow-lg border-2 border-gray-100/10 dark:border-gray-800/10"
                     />
-                    <h3 className="w-2/3 text-5xl font-bold text-white">
+                    <h3 className="text-start w-2/3 text-5xl font-bold text-white">
                         {item.title}
                     </h3>
                 </div>
