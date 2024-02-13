@@ -106,13 +106,13 @@ const MainMenu: React.FC<MainMenuProps> = ({
         id="default-carousel"
         className={`w-full h-full relative 
         ${isFullScreen ? '' : 
-        'pt-[22dvh] flex flex-col md:flex-row-reverse gap-8 p-8 border-amber-700 border-4 '} `}
+        'pt-[22dvh] flex flex-col xl:flex-row-reverse gap-8 p-8 border-amber-700 border-4 '} `}
         data-carousel="slide"
       >
         <ImageSlider
             items={images}
             currentImageIndex={currentImageIndex}
-            className={`${isFullScreen ? "w-full " : "w-full md:w-1/2 h-1/2 md:h-full"}`}
+            className={`${isFullScreen ? "w-full " : "w-full h-1/2 xl:w-1/2 xl:h-full"}`}
             isFullScreen={isFullScreen}
             />
         <ThumbNailSlider 
@@ -123,7 +123,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             isFullScreen={isFullScreen}
             className={`${isFullScreen ? 
             "flex flex-row gap-4 w-full absolute p-4" : 
-            "w-full h-1/2 md:h-full md:w-1/2 flex flex-col gap-4 p-4" }`}
+            "w-full h-1/2 xl:h-full xl:w-1/2 flex flex-col gap-4 p-4" }`}
         />  
 
       </div>

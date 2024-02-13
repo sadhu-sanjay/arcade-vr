@@ -38,7 +38,7 @@ function App() {
   function Logo() {
 
       return (
-        <div className="absolute left-1/2 -translate-x-1/2 top-2  z-50 flex flex-col items-center justify-center h-[22dvh] ">
+        <div className="absolute w-full left-1/2 -translate-x-1/2 top-2  z-50 flex flex-col items-center justify-center h-[22dvh] ">
                 <img
                   src={design3d}
                   alt="Bamigos Logo"

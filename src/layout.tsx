@@ -20,10 +20,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/*<button className="absolute left-2 top-2" onClick={toggleFullScreen}>
         Toggle Full Screen
       </button> */}
-      <head>
-        <title>Games</title>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <img
         className="absolute bottom-0 left-0"
         src={rainbow}
