@@ -5,6 +5,7 @@ import {Games} from "~/data/games"
 
 import MainMenu from "~/app/main-menu"
 
+
 function App() {
     
     const [isFullScreen, setIsFullScreen] = useState(false);
