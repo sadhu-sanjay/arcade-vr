@@ -112,7 +112,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
         <ImageSlider
             items={images}
             currentImageIndex={currentImageIndex}
-            className={`${isFullScreen ? "w-full " : "w-full h-1/2 xl:w-1/2 xl:h-full"}`}
+            className={`${isFullScreen ? "w-full " : "w-full h-1/2 xl:w-2/3 xl:h-full"}`}
             isFullScreen={isFullScreen}
             />
         <ThumbNailSlider 
@@ -123,7 +123,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             isFullScreen={isFullScreen}
             className={`${isFullScreen ? 
             "flex flex-row gap-4 w-full absolute p-4" : 
-            "w-full h-1/2 xl:h-full xl:w-1/2 flex flex-col gap-4 p-4" }`}
+            "w-full h-1/2 xl:h-full xl:w-1/3 flex flex-col gap-4 p-4" }`}
         />  
 
       </div>
