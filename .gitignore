@@ -11,7 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
-server/.venv
+
+# accidentally committed .venv directory (venv is the default virtual environment directory used by Python)
+
 
 # Editor directories and files
 .vscode/*
@@ -24,3 +26,4 @@ server/.venv
 *.sln
 *.sw?
 .vercel
+.venv
