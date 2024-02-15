@@ -4,30 +4,33 @@
 
 # have a get method which return a random number from 0 to 100 
 # keep in mind to use flask and flask cors run on a specific port
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 import random
 from flask_cors import CORS
+import os
 
-
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../dist')
 CORS(app)
 
-@app.route('/credit', methods=['GET'])
-def get_random_number():
-    random_number = random.randint(1, 100)  # Generate a random number between 1 and 100
-    
-    print("Request received")
-    print("Credit: ", random_number)
 
-    return jsonify({'random_number': random_number})
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
-# Serve the entire dist directory
-@app.route('/')
-def index():
-    return app.send_static_file('/dist/index.html')
+# define a route for get method named start game 
+@app.route('/startgame', methods=['GET'])
+def start_game():
+    # when this route is called minimize the chrome application . keep in this is a windows 
+    # specific command
+    os.system("start /min chrome http://localhost:5000/")
 
+    return jsonify({'number': random.randint(0, 100)})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5002)
 
+    app.run(use_reloader=True, port=5000, threaded=True)
 
