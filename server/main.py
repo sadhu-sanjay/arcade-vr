@@ -21,7 +21,7 @@ def serve(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
-# define a route for get method named start game 
+# define a route for get method named start game
 @app.route('/startgame', methods=['GET'])
 def start_game():
     # when this route is called minimize the chrome application . keep in this is a windows 
