@@ -12,8 +12,6 @@ dist
 dist-ssr
 *.local
 
-# accidentally committed .venv directory (venv is the default virtual environment directory used by Python)
-
 
 # Editor directories and files
 .vscode/*
