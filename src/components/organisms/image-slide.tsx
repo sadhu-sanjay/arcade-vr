@@ -13,7 +13,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({items, currentImageIndex, clas
 
 return (
   <div
-    className={`bg-red-900 relative h-full w-full overflow-hidden rounded-xl ${className}`}
+    className={`bg-black relative h-full w-full overflow-hidden rounded-xl ${className}`}
   >
     {items &&
       items?.map((game: Game, index: number) => (

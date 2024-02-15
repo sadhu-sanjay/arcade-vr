@@ -1,6 +1,7 @@
 import rainbow from "/rainbow.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+
   // const toggleFullScreen = () => {
   //   if (!document.fullscreenElement) {
   //     document.documentElement.requestFullscreen();

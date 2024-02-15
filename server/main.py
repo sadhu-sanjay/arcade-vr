@@ -21,12 +21,13 @@ def get_random_number():
 
     return jsonify({'random_number': random_number})
 
+# Serve the entire dist directory
+@app.route('/')
+def index():
+    return app.send_static_file('/dist/index.html')
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5002)
-
-
-
-
-
 
 
