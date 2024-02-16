@@ -119,7 +119,11 @@ const MainMenu: React.FC<MainMenuProps> = ({
             componentRef={gridRef}
             images={images}
             selectedIndex={currentImageIndex}
-            onSelect={(index) => setCurrentImageIndex(index)}
+            onSelect={(index) => {
+                setCurrentImageIndex(index)
+                console.log("index", index)
+                fetch('http://127.0.0.1:3000/start-game').then(res => res.json()).then(console.log)
+            }}
             isFullScreen={isFullScreen}
             className={`${isFullScreen ? 
             "flex flex-row gap-4 w-full absolute p-4" : 

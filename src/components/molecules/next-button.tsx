@@ -1,3 +1,4 @@
+
 type ButtonProps = {
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
     isFullScreen: boolean
@@ -40,4 +41,4 @@ const NextButton: React.FC<ButtonProps> = ({ onClick, isFullScreen }) => {
     )
 }
 
-export {NextButton}
+export { NextButton }
