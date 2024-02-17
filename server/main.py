@@ -44,7 +44,7 @@ def start_game():
 
     except Exception as e:
         # if error return it 
-        print(e.message)
+        print("Error: ", e)
         return jsonify(e.message)
 
 if __name__ == '__main__':
