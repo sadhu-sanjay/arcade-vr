@@ -37,6 +37,8 @@ def start_game():
             print("Metacade ", result)
             # minimize the first window
             result[0].minimize()
+
+            time.sleep(1)
     
         return jsonify(random.randint(0, 100))
 

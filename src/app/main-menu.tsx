@@ -74,11 +74,17 @@ const MainMenu: React.FC<MainMenuProps> = ({
         case "Enter":
           event.preventDefault();
           // eslint-disable-next-line no-case-declarations
-          fetch('http://127.0.0.1:3000/start-game').then(res => res.json()).then(console.log)
-          const game = images[index];
-          if (game.url) {
-            window.open(game.url, "_blank");
-          }
+          fetch('http://127.0.0.1:3000/start-game')
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => {
+            alert("Error: " + err);
+            console.log(err)
+            })
+          //const game = images[index];
+          //if (game.url) {
+          //  window.open(game.url, "_blank");
+          //}
           break;
       }
 
