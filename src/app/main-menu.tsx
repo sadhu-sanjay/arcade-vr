@@ -51,7 +51,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       const { key } = event;
-      const items = Array.from(gridRef.current?.children || []);
+      // const items = Array.from(gridRef.current?.children || []);
       // const index = items.indexOf(document.activeElement as HTMLElement);
     
       switch (key) {
@@ -126,10 +126,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             componentRef={gridRef}
             images={images}
             selectedIndex={currentImageIndex}
-            onSelect={(index) => {
-                setCurrentImageIndex(index)
-                console.log("index", index)
-            }}
+            onSelect={(index) => setCurrentImageIndex(index)}
             isFullScreen={isFullScreen}
             className={`${isFullScreen ? 
             "flex flex-row gap-4 w-full absolute p-4" : 
