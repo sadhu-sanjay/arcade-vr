@@ -44,8 +44,8 @@ def start_game():
 
     except Exception as e:
         # if error return it 
-        print(e)
-        return jsonify(e)
+        print(e.message)
+        return jsonify(e.message)
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=3000, threaded=True)
