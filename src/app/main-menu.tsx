@@ -52,7 +52,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
     const handleKeyDown = (event: KeyboardEvent) => {
       const { key } = event;
       const items = Array.from(gridRef.current?.children || []);
-      const index = items.indexOf(document.activeElement as HTMLElement);
+      // const index = items.indexOf(document.activeElement as HTMLElement);
     
       switch (key) {
         case "ArrowUp":
