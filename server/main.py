@@ -40,7 +40,7 @@ def start_game():
 
             time.sleep(1)
     
-        return jsonify(random.randint(0, 100))
+            return jsonify(random.randint(0, 100))
 
     except Exception as e:
         # if error return it 
