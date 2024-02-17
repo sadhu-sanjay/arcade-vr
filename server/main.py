@@ -27,8 +27,14 @@ def start_game():
     
     result = gw.getWindowWithTitle("Metacade")
 
+    if result is None:
+        print("Metacade not found")
+    else:
+        print("Metacade ", result)
+        # minimize the getWindowWithTitle
+        result.minimize()
+
     print("Paper Plane ", result)
-    
 
     return jsonify(random.randint(0, 100))
 
