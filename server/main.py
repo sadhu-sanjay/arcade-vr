@@ -9,6 +9,7 @@ import random
 from flask_cors import CORS
 import os
 import pygetwindow as gw
+from time import sleep
 
 from CONST import WINDOW_TITLE
 
