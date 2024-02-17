@@ -31,8 +31,9 @@ def start_game():
         print("Metacade not found")
     else:
         print("Metacade ", result)
-        # minimize the getWindowWithTitle
-        result.minimize()
+        # minimize the first window
+        result[0].minimize()
+
 
     print("Paper Plane ", result)
 
