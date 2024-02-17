@@ -25,7 +25,7 @@ def serve(path):
 @app.route('/start-game', methods=['GET'])
 def start_game():
     
-    result = gw.getWindowWithTitle("Metacade")
+    result = gw.getWindowsWithTitle("Metacade")
 
     if result is None:
         print("Metacade not found")
