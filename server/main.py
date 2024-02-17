@@ -10,6 +10,9 @@ from flask_cors import CORS
 import os
 import pygetwindow as gw
 
+from CONST import WINDOW_TITLE
+
+
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
 
@@ -25,19 +28,22 @@ def serve(path):
 @app.route('/start-game', methods=['GET'])
 def start_game():
     
-    result = gw.getWindowsWithTitle("Metacade")
+    result = gw.getWindowsWithTitle(WINDOW_TITLE)
 
-    if result is None:
-        print("Metacade not found")
-    else:
-        print("Metacade ", result)
-        # minimize the first window
-        result[0].minimize()
+    try:
+        if result is None:
+            print("Metacade not found")
+        else:
+            print("Metacade ", result)
+            # minimize the first window
+            result[0].minimize()
+    
+        return jsonify(random.randint(0, 100))
 
-
-    print("Paper Plane ", result)
-
-    return jsonify(random.randint(0, 100))
+    except Exception as e:
+        # if error return it 
+        print(e)
+        return jsonify(e)
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=3000, threaded=True)

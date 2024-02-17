@@ -74,6 +74,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
         case "Enter":
           event.preventDefault();
           // eslint-disable-next-line no-case-declarations
+          fetch('http://127.0.0.1:3000/start-game').then(res => res.json()).then(console.log)
           const game = images[index];
           if (game.url) {
             window.open(game.url, "_blank");
@@ -122,7 +123,6 @@ const MainMenu: React.FC<MainMenuProps> = ({
             onSelect={(index) => {
                 setCurrentImageIndex(index)
                 console.log("index", index)
-                fetch('http://127.0.0.1:3000/start-game').then(res => res.json()).then(console.log)
             }}
             isFullScreen={isFullScreen}
             className={`${isFullScreen ? 
