@@ -39,7 +39,7 @@ def start_game():
             # minimize the first window
             result[0].minimize()
 
-            time.sleep(1)
+            sleep(1)
     
             return jsonify(random.randint(0, 100))
 
