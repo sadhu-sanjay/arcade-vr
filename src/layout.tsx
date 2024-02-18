@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         Toggle Full Screen
       </button> */}
       <img
-        className="absolute bottom-0 left-0"
+        className="absolute top-0 left-0"
         src={rainbow}
         alt="3d bg Design"
       />

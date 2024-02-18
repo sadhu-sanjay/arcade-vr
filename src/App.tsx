@@ -9,6 +9,7 @@ import MainMenu from "~/app/main-menu"
 function App() {
     
     const [isFullScreen, setIsFullScreen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
     return (<>
     <h1 className="text=4xl text-white">{isFullScreen}</h1>
@@ -19,7 +20,7 @@ function App() {
                    isFullScreen={isFullScreen}
                    setIsFullScreen={() => console.log("hello")}
                    className=""
-                />
+                />}
             </>);
 
   function Credits({onClick: _onClick}: {onClick: () => void})  {

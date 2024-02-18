@@ -13,6 +13,7 @@ from time import sleep
 
 from CONST import WINDOW_TITLE
 
+
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
 
@@ -27,21 +28,20 @@ def serve(path):
 # define a route for get method named start game
 @app.route('/start-game', methods=['GET'])
 def start_game():
+    
+    result = gw.getWindowsWithTitle(WINDOW_TITLE)
 
     try:
-        result = gw.getWindowsWithTitle(WINDOW_TITLE)
-
-        return jsonify("Metacade window not found")
-    #if result is None:
-    #        print("Metacade window not found")
-    #     return jsonify("Metacade window not found")
-    #    else:
-    #        print("Metacade ", result)
+        if result is None:
+            print("Metacade not found")
+            return Exception("Metacade not found");
+        else:
+            print("Found Window ==> ", result)
             # minimize the first window
-    #        result[0].minimize()
+            result[0].minimize()
 
-    #        sleep(1)
-    #        return jsonify(random.randint(0, 100))
+            sleep(1)
+            return jsonify(random.randint(0, 100))
 
     except Exception as e:
         # if error return it 
@@ -50,4 +50,5 @@ def start_game():
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=3000, threaded=True)
+
 
