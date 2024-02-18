@@ -12,7 +12,6 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     
     return (<>
-    <h1 className="text=4xl text-white">{isFullScreen}</h1>
                 <Logo/>
                 <Credits onClick={() => setIsFullScreen(!isFullScreen)}/>
                 <MainMenu 

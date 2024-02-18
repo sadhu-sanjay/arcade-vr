@@ -117,14 +117,14 @@ const MainMenu: React.FC<MainMenuProps> = ({
     <>
       <div
         id="default-carousel"
-        className={`w-full h-full relative 
-        ${isFullScreen ? '' : 
-        'pt-[22dvh] flex flex-col xl:flex-row-reverse gap-8 p-8 border-amber-700 border-4 '} `}
+        className={`w-full h-full relative border-8 border-amber-700/80 
+        ${isFullScreen ? '' : 'pt-[22dvh] flex flex-col xl:flex-row-reverse gap-8 p-8 '} 
+        `}
         data-carousel="slide"
       >
         <h1 className={`${isLoading ? 'opacity-100' : 'opacity-0' }
-         text-9xl font-bold text-white absolute 
-         text-red-700/80 animate-blink
+         text-9xl font-bold absolute 
+         text-amber-700/80 animate-blink
          top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
         `}>
             Loading...
@@ -143,8 +143,9 @@ const MainMenu: React.FC<MainMenuProps> = ({
             selectedIndex={currentImageIndex}
             onSelect={(index) => setCurrentImageIndex(index)}
             isFullScreen={isFullScreen}
-            className={`${isFullScreen ? 
-            "flex flex-row gap-4 w-full absolute p-4" : 
+            className={` 
+            ${isFullScreen ? 
+            "flex flex-row gap-4 w-full h-full absolute p-4" : 
             "w-full h-1/2 xl:h-full xl:w-1/3 flex flex-col gap-4 p-4" }
             ${isLoading ? "opacity-0" : "opacity-100"}
             `}

@@ -19,7 +19,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
         <div
           ref={componentRef}
           className={`z-30 space-x-3 bottom-5  rounded-xl
-            px-4 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}
+            p-8 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}
         >
           {images?.map((item, index) => (
             <GridItem2
@@ -29,14 +29,13 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
               index={index}
             >
                 <div className={`flex flex flex-row items-center justify-space-between 
-                 gap-4 w-full h-auto ${isFullScreen ? '' :'pr-4' } overflow-hidden`}>
+                 gap-4 w-full h-full ${isFullScreen ? '' :'pr-4' } overflow-hidden`}>
                     <img
                         src={item.image}
                         alt={item.title}
-                        className={`${isFullScreen ? 'w-full rounded-xl' : 'w-1/3 rounded-l-xl'} h-full object-contain overflow-hidden `}
+                        className={`${isFullScreen ? 'w-full rounded-xl' : 'w-1/3 rounded-l-xl'} h-full object-cover overflow-hidden `}
                     />
-                    {!isFullScreen && <h3 className="text-start w-2/3 text-4xl font-semibold text-white"> {item.title}
-                    </h3>}
+                    {!isFullScreen && <h3 className="text-start w-2/3 text-4xl font-semibold text-white"> {item.title}</h3>}
                 </div>
             </GridItem2>
           ))}
