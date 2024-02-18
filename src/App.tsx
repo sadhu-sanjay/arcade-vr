@@ -9,7 +9,6 @@ import MainMenu from "~/app/main-menu"
 function App() {
     
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     
     return (<>
                 <Logo/>

@@ -78,14 +78,18 @@ const MainMenu: React.FC<MainMenuProps> = ({
           setLoading(true);
           
           setTimeout(() => {
-              fetch('http://127.0.0.1:3000/start-game')
-                .then(res => res.json())
-                .then(data => console.log(data))
-                .catch(err => {
-                alert("Error: " + err);
-                console.log(err)
-                })
-          }, 30000);
+            fetch("http://127.0.0.1:3000/start-game")
+              .then((r) => r.json())
+              .then((d) => console.log(d))
+              .catch((error) => {
+                console.error(
+                  "There has been a problem with your fetch operation:",
+                  error
+                );
+                alert(`Error: ${error.message}.`);
+              });
+
+          }, 3000);
 
           //const game = images[index];
           //if (game.url) {

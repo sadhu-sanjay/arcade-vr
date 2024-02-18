@@ -26,10 +26,21 @@ def serve(path):
 # define a route for get method named start game
 @app.route('/start-game', methods=['GET'])
 def start_game():
-    # return a random number
-    return minimize_window_titled(WINDOW_TITLE)
+    """
+    Attempts to minimize the window with the specified title, returning a JSON response.
+
+    Returns:
+        flask.Response: A JSON response with either a random integer or an error message.
+    """
+
+    try:
+        result = minimize_window_titled(WINDOW_TITLE)
+        return jsonify(result), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=3000, threaded=True)
-
 
