@@ -8,11 +8,9 @@ from flask import Flask, jsonify, send_from_directory
 import random
 from flask_cors import CORS
 import os
-import pygetwindow as gw
 from time import sleep
-
 from CONST import WINDOW_TITLE
-
+from gameplay import minimize_window_titled
 
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
@@ -28,25 +26,8 @@ def serve(path):
 # define a route for get method named start game
 @app.route('/start-game', methods=['GET'])
 def start_game():
-    
-    result = gw.getWindowsWithTitle(WINDOW_TITLE)
-
-    try:
-        if result is None:
-            print("Metacade not found")
-            return Exception("Metacade not found");
-        else:
-            print("Found Window ==> ", result)
-            # minimize the first window
-            result[0].minimize()
-
-            sleep(1)
-            return jsonify(random.randint(0, 100))
-
-    except Exception as e:
-        # if error return it 
-        print("Error: ", e)
-        return jsonify(e.message)
+    # return a random number
+    return minimize_window_titled(WINDOW_TITLE)
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=3000, threaded=True)

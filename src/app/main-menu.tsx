@@ -52,8 +52,8 @@ const MainMenu: React.FC<MainMenuProps> = ({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       const { key } = event;
-      const items = Array.from(gridRef.current?.children || []);
-      const index = items.indexOf(document.activeElement as HTMLElement);
+      //const items = Array.from(gridRef.current?.children || []);
+      //const index = items.indexOf(document.activeElement as HTMLElement);
     
       switch (key) {
         case "ArrowUp":
@@ -145,7 +145,7 @@ const MainMenu: React.FC<MainMenuProps> = ({
             isFullScreen={isFullScreen}
             className={` 
             ${isFullScreen ? 
-            "flex flex-row gap-4 w-full h-full absolute p-4" : 
+            "flex flex-row gap-4 w-full h-auto absolute p-4" : 
             "w-full h-1/2 xl:h-full xl:w-1/3 flex flex-col gap-4 p-4" }
             ${isLoading ? "opacity-0" : "opacity-100"}
             `}

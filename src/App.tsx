@@ -19,7 +19,7 @@ function App() {
                    isFullScreen={isFullScreen}
                    setIsFullScreen={() => console.log("hello")}
                    className=""
-                />}
+                />
             </>);
 
   function Credits({onClick: _onClick}: {onClick: () => void})  {

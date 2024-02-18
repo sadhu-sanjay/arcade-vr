@@ -18,7 +18,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
       <>
         <div
           ref={componentRef}
-          className={`z-30 space-x-3 bottom-5  rounded-xl
+          className={`z-30 space-x-3 bottom-5 rounded-xl 
             p-8 bg-gray-100/10 dark:bg-gray-800/10 overflow-hidden ${className}`}
         >
           {images?.map((item, index) => (
