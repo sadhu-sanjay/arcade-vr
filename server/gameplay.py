@@ -60,7 +60,7 @@ def maximize_window_titled(title):
         raise e
 
 
-def ensure_process_running(process_name, start_command, max_attempts=10):
+def ensure_process_running(process_name, start_command, max_attempts=1):
     """
         Don't end this function until the process started successfully
     """
