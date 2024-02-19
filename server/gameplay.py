@@ -89,3 +89,17 @@ def ensure_process_running(process_name, start_command):
             if process_name in proc.info['name']:
                 print(f"Process '{process_name}' started successfully with PID: {proc.info['pid']}")
                 return proc.info['pid']
+
+def make_browser_full_screen():
+    """
+    Make the browser full screen
+    """
+    try:
+        import pyautogui
+        pyautogui.hotkey('f11')
+    except Exception as e:
+        print("Exception: ", e)
+        raise e
+
+        
+

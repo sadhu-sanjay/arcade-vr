@@ -12,6 +12,7 @@ from time import sleep
 from CONST import WINDOW_TITLE
 from gameplay import minimize_window_titled, ensure_process_running, maximize_window_titled
 
+
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
 
@@ -40,10 +41,13 @@ def start_game():
 
 if __name__ == '__main__':
     
-    ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
+    ensure_process_running("wmplayer.exe", "C:\\Programm Files (x86)\\Windows Media Player\\wmplayer.exe")
+
     os.system("start msedge.exe http://127.0.0.1:3000")
 
-    maximize_window_titled(WINDOW_TITLE)
+    # set microsoft edge as active window and maximize it 
+
+
     # make browser full screen
     
     app.run(use_reloader=True, port=3000, threaded=True)
@@ -52,5 +56,4 @@ if __name__ == '__main__':
 
 
     #app.run(use_reloader=True, port=3000, threaded=True)
-
 
