@@ -42,14 +42,12 @@ def start_game():
 if __name__ == '__main__':
     
     ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
-
     os.system("start msedge.exe http://127.0.0.1:3000")
 
     # set microsoft edge as active window and maximize it 
 
 
     # make browser full screen
-    
     app.run(use_reloader=True, port=3000, threaded=True)
     # ensure_process_running("steam.exe", "C:\\Program Files (x86)\\Steam\\steam.exe")
     # ensure_process_running("steamvr.exe", "C:\\Program Files (x86)\\Steam\\steamvr.exe")
