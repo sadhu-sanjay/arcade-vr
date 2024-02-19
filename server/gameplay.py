@@ -59,37 +59,8 @@ def maximize_window_titled(title):
         print("Exception: ", e)
         raise e
 
+
 def ensure_process_running(process_name, start_command):
-
-    try:
-
-        # Check if the process is running
-        for proc in psutil.process_iter(['pid', 'name']):
-            if process_name in proc.info['name']:
-                print(f"Process '{process_name}' is already running with PID: {proc.info['pid']}")
-                return proc.info['pid']
-
-        # Start the process
-        print(f"Starting process '{process_name}' with command: {start_command}")
-        # Q: why shell=True? A: https://docs.python.org/3/library/subprocess.html#replacing-shell-pipeline
-        subprocess.Popen(start_command, shell=True)
-
-        # Wait for the process to start
-        time.sleep(5)
-
-        # Check if the process is running
-        for proc in psutil.process_iter(['pid', 'name']):
-            if process_name in proc.info['name']:
-                print(f"Process '{process_name}' started successfully with PID: {proc.info['pid']}")
-                return proc.info['pid']
-
-        raise Exception(f"Failed to start process '{process_name}'")
-
-    except (ImportError, Exception) as e:
-        print("Exception: ", e)
-        ### raise e
-
-def ensure_process_running2(process_name, start_command):
         """
             Don't end this functions until the process started successfully
         """
