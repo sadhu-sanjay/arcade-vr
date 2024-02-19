@@ -1,6 +1,7 @@
 import psutil
 import subprocess
 import time
+import random
 
 def minimize_window_titled(title):
     """
