@@ -41,11 +41,14 @@ def start_game():
 if __name__ == '__main__':
     
     ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
-    ensure_process_running("chrome.exe", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe")
-    ensure_process_running("MicrosoftEdge.exe", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe")
-
-
-
+    # open edge with 'http://127.0.0.1:3000' as the home page
+    
+    ensure_process_running("msedge.exe", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe")
+    sleep(2)
+    os.system("start msedge.exe http://127.0.0.1:3000")
+    
+    
 
     app.run(use_reloader=True, port=3000, threaded=True)
+
 
