@@ -66,6 +66,6 @@ def ensure_process_running(process_name, start_command):
 
     except (ImportError, Exception) as e:
         print("Exception: ", e)
-        raise e
+        ### raise e
 
 
