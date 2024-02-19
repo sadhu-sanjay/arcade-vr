@@ -10,7 +10,7 @@ from flask_cors import CORS
 import os
 from time import sleep
 from CONST import WINDOW_TITLE
-from gameplay import minimize_window_titled, ensure_process_running
+from gameplay import minimize_window_titled, ensure_process_running, maximize_window_titled
 
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
@@ -42,8 +42,14 @@ if __name__ == '__main__':
     
     ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
     os.system("start msedge.exe http://127.0.0.1:3000")
+
+    maximize_window_titled(WINDOW_TITLE)
+    # make browser full screen
     
-    
+    app.run(use_reloader=True, port=3000, threaded=True)
+    # ensure_process_running("steam.exe", "C:\\Program Files (x86)\\Steam\\steam.exe")
+    # ensure_process_running("steamvr.exe", "C:\\Program Files (x86)\\Steam\\steamvr.exe")
+
 
     #app.run(use_reloader=True, port=3000, threaded=True)
 

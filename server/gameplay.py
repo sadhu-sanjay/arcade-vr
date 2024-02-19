@@ -30,14 +30,33 @@ def minimize_window_titled(title):
         print("Exception: ", e)
         raise e
 
-
-def start_game():
+def maximize_window_titled(title):
     """
-        Attempts to start the game by minimizng the browser.
-        starts the steam.exe and steamvr.exe 
+    Attempts to maximize a window with the specified title using `pygetwindow`.
 
+    Returns:
+        int: A random integer the window is maximized successfully,
+              otherwise raises an exception.
     """
+    try:
+        import pygetwindow as gw
 
+        # Handle potential import errors gracefully
+        if not gw.__version__:
+            raise ImportError("pygetwindow could not be imported. Please install it.")
+
+        result = gw.getWindowsWithTitle(title)
+        if result is None:
+            raise Exception(f"Window with title '{title}' not found.")
+        else:
+            print("Found Window ==> ", result)
+            result[0].maximize()
+            time.sleep(1)  # Consider adjusting the sleep duration based on requirements
+            return random.randint(0, 100)  # Provide context if a meaningful value is expected
+
+    except (ImportError, Exception) as e:
+        print("Exception: ", e)
+        raise e
 
 def ensure_process_running(process_name, start_command):
 
