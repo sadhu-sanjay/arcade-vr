@@ -78,6 +78,7 @@ def ensure_process_running(process_name, start_command):
                 subprocess.Popen(start_command, shell=True)
 
                 # Break out of the loop if the process starts successfully
+                print("Breakinggg")
                 break
 
             except (ImportError, Exception) as e:
