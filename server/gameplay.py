@@ -60,47 +60,34 @@ def maximize_window_titled(title):
         raise e
 
 
-def ensure_process_running(process_name, start_command):
-        """
-            Don't end this functions until the process started successfully
-        """
-        while True:
-            try:
-                # Check if the process is running
-                for proc in psutil.process_iter(['pid', 'name']):
-                    if process_name in proc.info['name']:
-                        print(f"Process '{process_name}' is already running with PID: {proc.info['pid']}")
-                        return proc.info['pid']
-
-                # Start the process
-                print(f"Starting process '{process_name}' with command: {start_command}")
-                # Q: why shell=True? A: https://docs.python.org/3/library/subprocess.html#replacing-shell-pipeline
-                subprocess.Popen(start_command, shell=True)
-
-                # Break out of the loop if the process starts successfully
-                print("Breakinggg")
-                break
-
-            except (ImportError, Exception) as e:
-                print("Exception: ", e)
-                ### raise e
-    
-                # Check if the process is running
-        for proc in psutil.process_iter(['pid', 'name']):
-            if process_name in proc.info['name']:
-                print(f"Process '{process_name}' started successfully with PID: {proc.info['pid']}")
-                return proc.info['pid']
-
-def make_browser_full_screen():
+def ensure_process_running(process_name, start_command, max_attempts=10):
     """
-    Make the browser full screen
+        Don't end this function until the process started successfully
     """
-    try:
-        import pyautogui
-        pyautogui.hotkey('f11')
-    except Exception as e:
-        print("Exception: ", e)
-        raise e
+    attempts = 0
+    while attempts < max_attempts:
+        try:
+            # Check if the process is running
+            for proc in psutil.process_iter(['pid', 'name']):
+                if process_name in proc.info['name']:
+                    print(f"Process '{process_name}' is already running with PID: {proc.info['pid']}")
+                    return proc.info['pid']
 
-        
+            # Start the process
+            print(f"Starting process '{process_name}' with command: {start_command}")
+            subprocess.Popen(start_command, shell=True)
 
+            # Check if the process started successfully
+            for proc in psutil.process_iter(['pid', 'name']):
+                if process_name in proc.info['name']:
+                    print(f"Process '{process_name}' started successfully with PID: {proc.info['pid']}")
+                    return proc.info['pid']
+
+        except (ImportError, Exception) as e:
+            print("Exception: ", e)
+            attempts += 1
+            time.sleep(5)  # Wait for 5 seconds before trying again
+
+    print(f"Failed to start process '{process_name}' after {max_attempts} attempts.")
+    return None
+       
