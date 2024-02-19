@@ -41,6 +41,11 @@ def start_game():
 if __name__ == '__main__':
     
     ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
+    ensure_process_running("chrome.exe", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe")
+    ensure_process_running("MicrosoftEdge.exe", "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe")
+
+
+
 
     app.run(use_reloader=True, port=3000, threaded=True)
 
