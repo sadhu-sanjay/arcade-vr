@@ -43,7 +43,7 @@ if __name__ == '__main__':
     ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
     # open edge with 'http://127.0.0.1:3000' as the home page
     
-    os.system("start msedge.exe http://127.0.0.1:3000")
+    os.system("start msedge.exe ")
     
     
 
