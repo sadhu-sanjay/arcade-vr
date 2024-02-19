@@ -10,7 +10,7 @@ from flask_cors import CORS
 import os
 from time import sleep
 from CONST import WINDOW_TITLE
-from gameplay import minimize_window_titled
+from gameplay import minimize_window_titled, ensure_process_running
 
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
@@ -32,15 +32,15 @@ def start_game():
     Returns:
         flask.Response: A JSON response with either a random integer or an error message.
     """
-
     try:
         result = minimize_window_titled(WINDOW_TITLE)
         return jsonify(result), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-
 if __name__ == '__main__':
+    
+    ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
+
     app.run(use_reloader=True, port=3000, threaded=True)
 

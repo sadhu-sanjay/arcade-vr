@@ -1,3 +1,7 @@
+import psutil
+import subprocess
+import time
+
 def minimize_window_titled(title):
     """
     Attempts to minimize a window with the specified title using `pygetwindow`.
@@ -19,7 +23,7 @@ def minimize_window_titled(title):
         else:
             print("Found Window ==> ", result)
             result[0].minimize()
-            sleep(1)  # Consider adjusting the sleep duration based on requirements
+            time.sleep(1)  # Consider adjusting the sleep duration based on requirements
             return random.randint(0, 100)  # Provide context if a meaningful value is expected
 
     except (ImportError, Exception) as e:
@@ -37,9 +41,6 @@ def start_game():
 def ensure_process_running(process_name, start_command):
 
     try:
-        import psutil
-        import subprocess
-        import time
 
         # Check if the process is running
         for proc in psutil.process_iter(['pid', 'name']):
@@ -49,6 +50,7 @@ def ensure_process_running(process_name, start_command):
 
         # Start the process
         print(f"Starting process '{process_name}' with command: {start_command}")
+        # Q: why shell=True? A: https://docs.python.org/3/library/subprocess.html#replacing-shell-pipeline
         subprocess.Popen(start_command, shell=True)
 
         # Wait for the process to start
@@ -66,4 +68,4 @@ def ensure_process_running(process_name, start_command):
         print("Exception: ", e)
         raise e
 
-    
+
