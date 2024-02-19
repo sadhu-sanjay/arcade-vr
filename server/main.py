@@ -42,8 +42,10 @@ if __name__ == '__main__':
     
     ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
     # open edge with 'http://127.0.0.1:3000' as the home page
-    
-    os.system("start msedge.exe ")
+   
+    # Q: why this is opening the the tab twice?
+    # A: because the first time it opens the tab, it opens the default page, and the second time it opens the home page
+    os.system("start msedge.exe http://127.0.0.1:3000")
     
     
 
