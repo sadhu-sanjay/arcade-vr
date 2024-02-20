@@ -41,8 +41,10 @@ def start_game():
 
 if __name__ == '__main__':
     
-    ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Playerr\\wmplayer.exe")
+    #ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
     #os.system("start msedge.exe http://127.0.0.1:3000")
+    # Ensure wmplayer is running 
+    ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
 
     # make browser full screen
     app.run(use_reloader=True, port=3000, threaded=True)

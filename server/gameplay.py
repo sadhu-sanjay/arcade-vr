@@ -88,6 +88,7 @@ def ensure_process_running(process_name, start_command, max_attempts=1):
             attempts += 1
             time.sleep(5)  # Wait for 5 seconds before trying again
 
-    print(f"Failed to start process '{process_name}' after {max_attempts} attempts.")
-    return None
+    #print(f"Failed to start process '{process_name}' after {max_attempts} attempts.")
+    #return None
        
+
