@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Solidz.IO</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/mystyle.css">
+	<style>
+		:root {
+	  touch-action: pan-x pan-y;
+	  height: 100%;
+	}
+		html, body {
+		overscroll-behavior-x: none;
+	}
+		html, body, div, a, p, h1, h2, h3, h4, h5, h6, img, svg, input, select, button, label, b, g, circle, path{
+			cursor: none;
+		  }
+	  </style>
+	<style type="text/css">
+		body{
+		    color:Black;
+		    font-family: Calibri;
+		    letter-spacing: 1px;
+/*		    font-size:xx-large;*/
+		    font-weight: bold;
+			}
+
+			.cat{
+				margin-top: 15px; 
+				height: 91px; 
+				{% if slot_no == 9 %}
+				width: 28%; 
+				margin: 10px 1%;
+				border: 5px #2196F3 solid;
+				{% elif slot_no == 16 %}
+				width: 20%; 
+				margin: 10px 1%;
+				border: 5px #2196F3 solid;
+				{% elif slot_no == 25 %}
+				width: 16%; 
+				margin: 4px .5%;
+				border: 5px #2196F3 solid;
+				{% elif slot_no == 49 %}
+				width: 13.4%;
+				margin: 2px .1%;
+				border: 1px #2196F3 solid;
+				{% endif %} 
+				float: left;
+				background-color: transparent;
+				border-radius: 4px;
+				overflow: hidden;
+			}
+			.blink{
+			    background-color: #2196F3;
+				animation: blink 5s linear infinite;
+			}
+			.cat .Key_Name{
+				font-size: 18px;
+				margin-top: -12px; 
+				line-height: .8;
+			}
+		@keyframes blink{
+		0%{background-color: red;
+			border-color : red;}
+		10%{background-color: green;
+			border-color : green;}
+		20%{background-color: blue;
+			border-color : blue;}
+		30%{background-color: red;
+			border-color : red;}
+		40%{background-color: green;
+			border-color : green;}
+		50%{background-color: blue;
+			border-color : blue;}
+		60%{background-color: red;
+			border-color : red;}
+		70%{background-color: green;
+			border-color : green;}
+		80%{background-color: blue;
+			border-color : blue;}
+		90%{background-color: red;
+			border-color : red;}
+		100%{background-color: green;
+			border-color : green;}
+		}
+		.img_filter{
+			{% if  flow_type == "Drop" %}
+			transform: rotate(0deg); 
+			filter: invert(11%) sepia(93%) saturate(7368%) hue-rotate(0deg) brightness(94%) contrast(115%);
+			{% else %}
+			transform: rotate(-45deg); 
+			filter: invert(21%) sepia(87%) saturate(6918%) hue-rotate(357deg) brightness(102%) contrast(121%);
+			{% endif %}
+			
+		}
+		.cat input:checked + .img_filter {
+			{% if  flow_type == "Drop" %}
+			transform: rotate(-45deg); 
+			filter: invert(13%) sepia(100%) saturate(2944%) hue-rotate(237deg) brightness(117%) contrast(132%);
+			{% else %}
+			transform: rotate(0deg); 
+			filter: invert(29%) sepia(98%) saturate(1925%) hue-rotate(84deg) brightness(100%) contrast(97%);
+			{% endif %}
+			}
+
+
+		.error_key{
+			filter: invert(98%) sepia(12%) saturate(251%) hue-rotate(204deg) brightness(109%) contrast(101%);
+			transform: rotate(-45deg);
+		}
+		.cat input:checked + .error_key {
+			transform: rotate(0deg); 
+			filter: invert(98%) sepia(12%) saturate(251%) hue-rotate(204deg) brightness(109%) contrast(101%);
+			}
+	</style>
+</head>
+<body style="background: url(../static/images/key_home_2.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover; 
+-moz-background-size: cover; 
+-o-background-size: cover; 
+background-size: cover;">
+	<div style="text-align: center;  {% if doors == () %}margin-top: 40px; {% else %}margin-top: 10px; {% endif %}"><img src="../static/images/solidz_new.png" height="auto" width="360px" style="border-radius: 8px;"></div>
+	<div style="text-align: center; {% if doors == () %} margin-top: 80px; {% else %} margin-top: -50px; {% endif %}">
+		<h2>{{user_name}},{% if doors != () and flow_type == "Drop" or flow_type == "Pick" %} Choose Key {{flow_type}}... {% endif %}</h2>
+		
+	</div>
+	<form action="/pick_drop_message" id="key_pick" method="POST">
+	<div style="text-align: center; margin-top:80px; padding-left:15px;">
+		
+			<input type="hidden" name="user_id" value="{{user_id}}" />
+    <input type="hidden" name="user_name" value="{{user_name}}" />
+    <input type="hidden" name="operation" value="{{flow_type}}" />
+		<div class="container" style="z-index: 1000;">
+			{% if doors == () and flow_type == "Pick" %}
+        <h2 style="text-align: center;">No key slots available.</h2>
+
+    {% elif doors == () and flow_type == "Drop" %}
+        <h2 style="text-align: center;">You have not picked any keys.</h2>
+    {% else %}
+    {% for ki in key_in %}
+    {% set outer_loop = loop %}
+	    {% for door in doors %}
+	    	{% if ki.RFID_Card_No == door.RFID_Card_No%}
+			<div class="cat" {% if door.Key_Slot_No in keyslots_available %}{% else %} onclick="finish()" {% endif %}>
+			   <label>
+			   	<!-- <spasn style="margin-top: 2px; font-size: 16px;">Slot No : {{ki.Slot_No}}</span> -->
+			      <input {% if flow_type == "Drop" %} onChange="document.getElementById('key_pick').submit();" {% endif %} id="{{door}}" name="key_name" class="check" type="checkbox" value="{{ door.Key_Name }}" {% if door.RFID_Card_No not in ka and user_type == "User" %} disabled {% else %} onclick="checkboxes()" {% endif %}>
+			      <img src="../static/images/house-key.png" {% if door.RFID_Card_No not in ka and user_type == "User" %} style="filter: invert(62%) sepia(19%) saturate(686%) hue-rotate(308deg) brightness(106%) contrast(106%); transform: rotate(-45deg); background-color: blue; " {% else %} class="img_filter" {% endif %} width="80px" height="80px">
+			      <span class="Key_Name">{{ door.Key_Name }}</span>
+			   </label>
+			</div>
+			{% endif %}
+		{% endfor %}
+		{% if ki.RFID_Card_No == '' and ki.Slot_No not in invalidcard %}
+					<div class="cat">
+					   <label>
+					   	<!-- <spasn style="margin-top: 2px; font-size: 16px;">Slot No : {{ki.Slot_No}}</span> -->
+					      <input {% if flow_type == "Drop" %} onChange="document.getElementById('key_pick').submit();" {% endif %} name="key_name" class="check" type="checkbox" disabled>
+					      <img src="../static/images/house-key.png" style="filter: invert(13%) sepia(100%) saturate(2944%) hue-rotate(237deg) brightness(117%) contrast(132%); transform: rotate(-45deg); width: 72%;">
+					      <span class="Key_Name">Key Out</span>
+					   </label>
+					</div>
+		{% elif ki.Slot_No in invalidcard %}
+			{% for ec in errordata %}
+				{% if ec.Slot_No == ki.Slot_No %}
+				<div class="cat blink">
+				   <label>
+				      <input {% if flow_type == "Drop" %} onChange="document.getElementById('key_pick').submit();" {% endif %} name="card_no" class="check" type="checkbox" value="{{ec.RFID_Card_No}}">
+				      <img src="../static/images/house-key.png" class="error_key" style="width: 72%;">
+				      <span style="margin-top: -12px; font-size: 15px; color: white;">Slot No : {{ki.Slot_No}}</span>
+				      <!-- <spasn style="margin-top: 2px; font-size: 16px;"></span> -->
+				   </label>
+				</div>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+
+</div><!-- end container -->
+<br>
+		
+		
+    <b id="alert" style="color: red; width: 100%; text-align: center; position: fixed; font-size: 25px; bottom: 80px; left: 0px;"></b>
+	
+    </div>
+    
+
+</form>
+
+<form action="/verify" id="choose_back" method="post">
+	<input type="hidden" name="user_id" value="{{user_id}}" />
+</form>
+
+    <div style="text-align: center; margin-bottom: 30px; position: fixed; bottom: 0px; width: 100%;">
+    	<a onclick="document.getElementById('choose_back').submit();"><input type="button" value="Back" class="button" style="color: white; background: blue; border: 1px blue solid; font-size: 18px; font-weight: 700; letter-spacing: 1px; float: left; margin-left: 50px;"></a>
+    	{% if flow_type == "Pick" %}
+        <button id="finishButton" disabled class="button" style="border: 1px green solid; display: none; font-size: 18px; font-weight: 700; letter-spacing: 1px; " onclick="document.getElementById('key_pick').submit();">FINISH</button>
+    		
+    		{% endif %}
+    	<a href="/"><input type="button" class="button" value="Cancel" style="color: white; background: blue; border: 1px blue solid; font-size: 18px; font-weight: 700; letter-spacing: 1px; float: right; margin-right: 50px;"></a>
+    </div>
+<script type="text/javascript">
+	var checks = document.querySelectorAll(".check");
+	var max = {{max_pick}};
+
+
+	for (var i = 0; i < checks.length; i++)
+	  checks[i].onclick = selectiveCheck;
+	
+	function selectiveCheck (event) {
+	  var checkedChecks = document.querySelectorAll(".check:checked");
+	  {% if true %}
+	  if(checkedChecks.length > max){
+	  	document.getElementById('alert').innerHTML = "You have choose your maximum pick key.";
+	    return false;
+		  }
+		  if (checkedChecks.length >= max){
+		  	document.getElementById('alert').innerHTML = "You have choose your maximum pick key.";
+		}else{
+			document.getElementById('alert').innerHTML = "";
+		}
+	{% endif %}
+	
+	{% if flow_type == "Pick" %}
+	if(checkedChecks.length >= 1){
+		document.getElementById('finishButton').disabled = false;
+		document.getElementById('finishButton').style.display = "inline";
+	}else{
+		document.getElementById('finishButton').disabled = true;
+		document.getElementById('finishButton').style.display = "none";
+	}
+	{% endif %}
+	}
+</script>
+
+    
+	
+</body>
+</html>

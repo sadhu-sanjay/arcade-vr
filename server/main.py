@@ -10,19 +10,26 @@ from flask_cors import CORS
 import os
 from time import sleep
 from CONST import WINDOW_TITLE
-from gameplay import minimize_window_titled, ensure_process_running, maximize_window_titled
-
+from gameplay import minimize_window_titled, ensure_process_running, maximize_window_titled, test
 
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def serve(path):
-    if path != "" and os.path.exists(app.static_folder + '/' + path):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
+#@app.route('/', defaults={'path': ''})
+#@app.route('/<path:path>')
+#def serve(path):
+#    if path != "" and os.path.exists(app.static_folder + '/' + path):
+#        return send_from_directory(app.static_folder, path)
+#    else:
+#        return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/key')
+def routeone():
+    return send_from_directory('.', 'keyChooser.html');
+
+@app.route('/new')
+def routetwo():
+    return send_from_directory('.', 'newkeyChooser.html');
 
 # define a route for get method named start game
 @app.route('/start-game', methods=['GET'])
@@ -44,12 +51,13 @@ if __name__ == '__main__':
     #ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
     #os.system("start msedge.exe http://127.0.0.1:3000")
     # Ensure wmplayer is running 
-    ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
+    #ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
+    #test()
 
     # make browser full screen
-    app.run(use_reloader=True, port=3000, threaded=True)
+    #app.run(use_reloader=True, port=3000, threaded=True)
     # ensure_process_running("steam.exe", "C:\\Program Files (x86)\\Steam\\steam.exe")
     # ensure_process_running("steamvr.exe", "C:\\Program Files (x86)\\Steam\\steamvr.exe")
 
-    #app.run(use_reloader=True, port=3000, threaded=True)
+    app.run(use_reloader=True, port=3000, threaded=True)
 
