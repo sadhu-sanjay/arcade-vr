@@ -4,7 +4,7 @@ from process_manager import is_process_running
 def ensure_browser_running():
     result = is_process_running(BROWSER)
     if result is not None:
-        return True
+        return result
 
     return False
 
