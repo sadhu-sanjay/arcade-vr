@@ -7,7 +7,6 @@ def ensure_process_running(program_path, program_name):
         Don't end this function until the process started successfully
     """
     process_running = is_process_running(program_name)
-    print("Process runing: =====>", process_running)
 
     if not process_running:
         print("Ok Trying to run thr process")
@@ -22,8 +21,8 @@ def is_process_running(program_name):
         if program_name == proc.info['name']:
             print(f"Process '{process_name}' is already running with PID: {proc.info['pid']}")
             return proc.info['pid']
-    print(f"Process '{program_name}' is not running.")
 
+    print(f"Process '{program_name}' is not running.")
     return None
 
 def run_process(path, max_attempts = 4):

@@ -11,7 +11,7 @@ import os
 from time import sleep
 from CONST import WINDOW_TITLE
 from process_manager import ensure_process_running, is_process_running
-import window_manager
+from app_manager import ensure_browser_running
 
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
@@ -41,8 +41,8 @@ def start_game():
 
 if __name__ == '__main__':
     
-    #ensure_process_running("/usr/bin/code", "vscode")
-    is_process_running("code")
+    ensure_browser_running()
+
 
     app.run(use_reloader=True, port=3000, threaded=True)
 
