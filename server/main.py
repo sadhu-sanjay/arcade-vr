@@ -41,7 +41,7 @@ def start_game():
 
 if __name__ == '__main__':
     
-    ensure_browser_running()
+    print(ensure_browser_running())
 
 
     app.run(use_reloader=True, port=3000, threaded=True)
