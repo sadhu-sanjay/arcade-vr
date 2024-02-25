@@ -19,7 +19,7 @@ def is_process_running(program_name):
 
     for proc in psutil.process_iter(['pid', 'name']):
         if program_name == proc.info['name']:
-            print(f"Process '{process_name}' is already running with PID: {proc.info['pid']}")
+            print(f"Process '{program_name}' is already running with PID: {proc.info['pid']}")
             return proc.info['pid']
 
     print(f"Process '{program_name}' is not running.")
