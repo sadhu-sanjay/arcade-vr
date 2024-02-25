@@ -10,7 +10,8 @@ from flask_cors import CORS
 import os
 from time import sleep
 from CONST import WINDOW_TITLE
-from gameplay import minimize_window_titled, ensure_process_running, maximize_window_titled, test
+from process_manager import ensure_process_running, is_process_running
+import window_manager
 
 app = Flask(__name__, static_folder='../dist')
 CORS(app)
@@ -40,12 +41,8 @@ def start_game():
 
 if __name__ == '__main__':
     
-    #ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
-    #os.system("start msedge.exe http://127.0.0.1:3000")
-    # Ensure wmplayer is running 
-    #ensure_process_running("wmplayer.exe", "C:\\Program Files (x86)\\Windows Media Player\\wmplayer.exe")
-    #test()
-
+    #ensure_process_running("/usr/bin/code", "vscode")
+    is_process_running("code")
 
     app.run(use_reloader=True, port=3000, threaded=True)
 
