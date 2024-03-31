@@ -2,15 +2,15 @@ import rainbow from "/rainbow.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 
-  // const toggleFullScreen = () => {
-  //   if (!document.fullscreenElement) {
-  //     document.documentElement.requestFullscreen();
-  //   } else {
-  //     if (document.exitFullscreen) {
-  //       document.exitFullscreen();
-  //     }
-  //   }
-  // };
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   /**
    * Main Application Layout
@@ -18,8 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
    */
   return (
     <main className="flex flex-col items-center justify-center min-h-screen h-screen ">
-      {/*<button className="absolute left-2 top-2" onClick={toggleFullScreen}>
-        Toggle Full Screen
+      {/* <button className="z-[100] absolute left-4 top-4" onClick={toggleFullScreen}>
+        F
       </button> */}
       <img
         className="absolute bottom-0 right-0 object-cover "

@@ -49,7 +49,6 @@ const MainMenu: React.FC<MainMenuProps> = ({
   const gridRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
 
-
     const handleKeyDown = (event: KeyboardEvent) => {
       const { key } = event;
       //const items = Array.from(gridRef.current?.children || []);
