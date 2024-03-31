@@ -41,7 +41,7 @@ function App() {
         <div className="absolute w-full left-1/2 -translate-x-1/2 top-2  z-50 flex flex-col items-center justify-center h-[22dvh] ">
                 <img
                   src={design3d}
-                  alt="Bamigos Logo"
+                  alt="Logo"
                   style={{
                     width: "100%",
                     height: "100%",
