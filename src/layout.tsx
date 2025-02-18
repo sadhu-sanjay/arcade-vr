@@ -2,15 +2,15 @@ import rainbow from "/rainbow.png";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 
-  const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-    }
-  };
+  // const toggleFullScreen = () => {
+  //   if (!document.fullscreenElement) {
+  //     document.documentElement.requestFullscreen();
+  //   } else {
+  //     if (document.exitFullscreen) {
+  //       document.exitFullscreen();
+  //     }
+  //   }
+  // };
 
   /**
    * Main Application Layout

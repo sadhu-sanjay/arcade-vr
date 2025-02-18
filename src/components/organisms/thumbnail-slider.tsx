@@ -28,7 +28,7 @@ const ThumbNailSlider: React.FC<SliderProps> = ({componentRef, images, selectedI
               key={index}
               index={index}
             >
-                <div className={`flex flex flex-row items-center justify-space-between 
+                <div className={`flex flex-row items-center justify-space-between 
                  gap-4 w-full h-full ${isFullScreen ? '' :'pr-4' } overflow-hidden`}>
                     <img
                         src={item.image}
